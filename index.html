@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0F1419">
-<title>M Flow — Pickleball Tracker</title>
+<meta name="theme-color" content="#1F3D2C">
+<title>M Flow — Giảm cân & Pickleball</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,6 +16,9 @@
   --ink: #1A1814;
   --ink-soft: #5A554C;
   --ink-mute: #8A847A;
+  --brand: #1F3D2C;
+  --brand-deep: #16301F;
+  --brand-glow: rgba(196, 154, 59, 0.18);
   --line: #E0DAC9;
   --line-soft: #EDE7D6;
   --accent: #C44827;
@@ -177,7 +180,7 @@ body::before {
 
 /* Hero today card */
 .hero {
-  background: var(--ink);
+  background: var(--brand);
   color: var(--bg);
   border-radius: var(--radius);
   padding: 24px;
@@ -193,7 +196,7 @@ body::before {
   right: -20%;
   width: 60%;
   height: 200%;
-  background: radial-gradient(circle, rgba(196, 72, 39, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, var(--brand-glow) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -278,6 +281,210 @@ body::before {
   border-color: var(--green-soft);
 }
 
+/* Date Navigator */
+.date-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.date-nav-arrow {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  width: 36px;
+  height: 56px;
+  border-radius: 12px;
+  font-size: 22px;
+  font-family: var(--serif);
+  color: var(--ink-soft);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.date-nav-arrow:hover { background: var(--brand); color: white; border-color: var(--brand); }
+.date-nav-arrow:active { transform: scale(0.95); }
+
+.date-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  flex: 1;
+}
+
+.date-cell {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 8px 2px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  min-width: 0;
+}
+
+.date-cell:hover {
+  border-color: var(--ink-soft);
+  background: var(--bg-elevated);
+}
+
+.date-cell-dow {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+.date-cell-day {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.date-cell.rest {
+  background: var(--bg-elevated);
+}
+
+.date-cell.rest .date-cell-dow,
+.date-cell.rest .date-cell-day {
+  color: var(--ink-mute);
+}
+
+.date-cell.today {
+  border-color: var(--brand);
+  border-width: 1.5px;
+}
+
+.date-cell.today::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.date-cell.selected {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.date-cell.selected .date-cell-dow {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.date-cell.selected .date-cell-day {
+  color: white;
+}
+
+.date-cell.future {
+  opacity: 0.5;
+}
+
+.date-cell.completed::before {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--green);
+}
+
+.date-cell.selected.completed::before {
+  background: white;
+}
+
+.date-context {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+
+.date-context-week {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.date-context-phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-context-phase-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.date-context-jump-today {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+
+.date-context-jump-today:hover {
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
+}
+
+.date-context-jump-today.hidden {
+  display: none;
+}
+
+.viewing-past {
+  background: var(--gold-soft);
+  border-color: transparent;
+}
+
+.viewing-future {
+  background: var(--blue-soft);
+  border-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .date-cell-day { font-size: 15px; }
+  .date-cell { padding: 6px 1px; }
+  .date-nav-arrow { width: 30px; height: 52px; font-size: 18px; }
+  .date-strip { gap: 3px; }
+}
+
 /* Weight tracking */
 .weight-display {
   display: grid;
@@ -338,7 +545,7 @@ body::before {
 .weight-input:focus { border-color: var(--accent); }
 
 .btn {
-  background: var(--ink);
+  background: var(--brand);
   color: white;
   border: none;
   padding: 14px 20px;
@@ -352,7 +559,7 @@ body::before {
 }
 
 .btn:active { transform: scale(0.97); }
-.btn:hover { background: var(--accent); }
+.btn:hover { background: var(--brand-deep); }
 
 .btn-ghost {
   background: transparent;
@@ -719,9 +926,9 @@ body::before {
 .filter-btn:hover { border-color: var(--ink-soft); }
 
 .filter-btn.active {
-  background: var(--ink);
+  background: var(--brand);
   color: white;
-  border-color: var(--ink);
+  border-color: var(--brand);
 }
 
 /* History */
@@ -772,7 +979,7 @@ body::before {
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--ink);
+  background: var(--brand);
   border-radius: 100px;
   padding: 6px;
   display: flex;
@@ -933,7 +1140,7 @@ body::before {
   bottom: 90px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: var(--ink);
+  background: var(--brand);
   color: white;
   padding: 12px 20px;
   border-radius: 100px;
@@ -948,6 +1155,179 @@ body::before {
 
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* Session toggles in hero */
+.session-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.session-toggle:hover { background: rgba(255, 255, 255, 0.08); }
+
+.session-toggle.done {
+  background: rgba(90, 122, 75, 0.25);
+  border-color: rgba(90, 122, 75, 0.5);
+}
+
+.session-toggle.suggested::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.session-toggle-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.session-toggle.done .session-toggle-check {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.session-toggle.done .session-toggle-check::after {
+  content: '✓';
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.session-toggle-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.session-toggle-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.session-toggle-label {
+  font-size: 13px;
+  color: white;
+  line-height: 1.2;
+}
+
+.session-toggle.done .session-toggle-label {
+  opacity: 0.85;
+}
+
+/* Sleep card */
+.sleep-display {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+  align-items: end;
+}
+
+.sleep-stat {
+  text-align: center;
+}
+
+.sleep-stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+
+.sleep-stat-value {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.sleep-stat-total .sleep-stat-value {
+  font-size: 32px;
+}
+
+.sleep-stat-target {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.sleep-stat-target.good { color: var(--green); }
+.sleep-stat-target.warn { color: var(--accent); }
+
+.sleep-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.sleep-input-group {
+  flex: 1;
+}
+
+.sleep-input-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+
+.sleep-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: var(--mono);
+  color: var(--ink);
+  outline: none;
+  transition: border 0.2s;
+}
+
+.sleep-input:focus { border-color: var(--accent); }
+
+@media (max-width: 480px) {
+  .sleep-stat-value { font-size: 20px; }
+  .sleep-stat-total .sleep-stat-value { font-size: 26px; }
+  .sleep-input { font-size: 14px; padding: 10px 12px; }
+  .sleep-input-row { flex-wrap: wrap; }
+  .sleep-input-row .btn { width: 100%; }
+}
+
 </style>
 </head>
 <body>
@@ -958,7 +1338,7 @@ body::before {
   <header class="header">
     <div class="brand">
       <div class="brand-name">M Flow</div>
-      <div class="brand-sub">Pickleball · 6 month plan</div>
+      <div class="brand-sub">Giảm cân &amp; Pickleball</div>
     </div>
     <div class="date-block">
       <div class="date-day" id="dateDay">--</div>
@@ -975,7 +1355,13 @@ body::before {
       <div id="todaySessions" class="hero-sessions"></div>
     </div>
 
-    <div class="phase-bar" id="phaseBar"></div>
+    <div class="date-nav">
+      <button class="date-nav-arrow" id="datePrev" aria-label="Tuần trước">‹</button>
+      <div class="date-strip" id="dateStrip"></div>
+      <button class="date-nav-arrow" id="dateNext" aria-label="Tuần sau">›</button>
+    </div>
+
+    <div class="date-context" id="dateContext"></div>
 
     <div class="section-title"><span class="num">01</span> Checklist</div>
     <div class="card" id="checklistCard">
@@ -1005,7 +1391,37 @@ body::before {
       <div class="chart-container" id="weightChart"></div>
     </div>
 
-    <div class="section-title"><span class="num">03</span> Ghi chú nhanh</div>
+    <div class="section-title"><span class="num">03</span> Giấc ngủ</div>
+    <div class="card">
+      <div class="sleep-display">
+        <div class="sleep-stat">
+          <div class="sleep-stat-label">Đi ngủ</div>
+          <div class="sleep-stat-value" id="sleepBedtimeDisplay">--:--</div>
+        </div>
+        <div class="sleep-stat sleep-stat-total">
+          <div class="sleep-stat-label">Tổng ngủ</div>
+          <div class="sleep-stat-value" id="sleepTotalDisplay">--<span class="weight-stat-unit">h</span></div>
+          <div class="sleep-stat-target" id="sleepStatusDisplay">Target 7.5h</div>
+        </div>
+        <div class="sleep-stat">
+          <div class="sleep-stat-label">Thức dậy</div>
+          <div class="sleep-stat-value" id="sleepWakeDisplay">--:--</div>
+        </div>
+      </div>
+      <div class="sleep-input-row">
+        <div class="sleep-input-group">
+          <label class="sleep-input-label">Đi ngủ</label>
+          <input type="time" class="sleep-input" id="sleepBedtime">
+        </div>
+        <div class="sleep-input-group">
+          <label class="sleep-input-label">Thức dậy</label>
+          <input type="time" class="sleep-input" id="sleepWake">
+        </div>
+        <button class="btn" onclick="logSleep()">Lưu</button>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="num">04</span> Ghi chú nhanh</div>
     <div class="card">
       <textarea class="rubric-note" id="todayNote" placeholder="Hôm nay học được gì? Cảm thấy thế nào?" style="min-height: 80px;"></textarea>
       <button class="btn btn-sm btn-ghost" style="margin-top: 10px;" onclick="saveNote()">Lưu ghi chú</button>
@@ -1104,10 +1520,11 @@ body::before {
 // ============================================================
 // DATA: Plan structure
 // ============================================================
-const PLAN_START = '2025-05-26'; // Monday - change to user's actual start
+const PLAN_START = '2026-05-26'; // M Flow's official start: Monday May 26, 2026
 const TARGET_WEIGHT_BASE = 66;
 const TARGET_WEIGHT_STRETCH = 64;
-const START_WEIGHT = 72;
+const START_WEIGHT = 72.5;
+const START_WEIGHT_DATE = '2026-05-25'; // Pre-launch baseline weigh-in
 
 const SCHEDULE = {
   1: { name: 'Thứ Hai',    sessions: [{time:'6:30', label:'Drill day', type:'work'},   {time:'18:00', label:'CLB Splendora', type:'work'}] },
@@ -1122,69 +1539,76 @@ const SCHEDULE = {
 const CHECKLIST_TEMPLATES = {
   // Mon, Thu - 2 sessions
   twoSessions: [
-    { id:'warmup_am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc trước drill' },
-    { id:'drill_am',  text:'Buổi drill sáng 60 phút', meta:'Kỹ thuật + machine + live' },
-    { id:'cooldown_am', text:'Cool-down sáng 5 phút', meta:'Stretch + nước' },
-    { id:'protein_breakfast', text:'Bữa sáng đủ protein (≥25g)', meta:'Recovery window' },
-    { id:'lunch', text:'Bữa trưa cân bằng', meta:'~600 kcal, 40g protein' },
-    { id:'snack_pre_clb', text:'Snack trước CLB 17:00', meta:'~200 kcal' },
-    { id:'warmup_pm', text:'Warm-up trước CLB 5 phút', meta:'Routine ngắn' },
-    { id:'clb_match', text:'Match CLB 60 phút', meta:'Áp dụng kỹ thuật sáng' },
-    { id:'cooldown_pm', text:'Cool-down sau CLB', meta:'Stretch + ăn tối' },
-    { id:'dinner', text:'Bữa tối đủ protein (≥40g)', meta:'~500 kcal' },
-    { id:'water', text:'Uống đủ 2L nước', meta:'+điện giải nếu nóng' },
-    { id:'sleep_prep', text:'Đi ngủ trước 23h', meta:'Target 7.5h ngủ' }
+    { id:'warmup_am', slot:'am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc trước drill' },
+    { id:'drill_am',  slot:'am', text:'Buổi drill sáng 60 phút', meta:'Kỹ thuật + machine + live' },
+    { id:'cooldown_am', slot:'am', text:'Cool-down sáng 5 phút', meta:'Stretch + nước' },
+    { id:'protein_breakfast', slot:'am', text:'Bữa sáng đủ protein (≥25g)', meta:'Recovery window' },
+    { id:'lunch', slot:'any', text:'Bữa trưa cân bằng', meta:'~600 kcal, 40g protein' },
+    { id:'snack_pre_clb', slot:'pm', text:'Snack trước CLB 17:00', meta:'~200 kcal' },
+    { id:'warmup_pm', slot:'pm', text:'Warm-up trước CLB 5 phút', meta:'Routine ngắn' },
+    { id:'clb_match', slot:'pm', text:'Match CLB 60 phút', meta:'Áp dụng kỹ thuật sáng' },
+    { id:'cooldown_pm', slot:'pm', text:'Cool-down sau CLB', meta:'Stretch + ăn tối' },
+    { id:'dinner', slot:'any', text:'Bữa tối đủ protein (≥40g)', meta:'~500 kcal' },
+    { id:'water', slot:'any', text:'Uống đủ 2L nước', meta:'+điện giải nếu nóng' },
+    { id:'sleep_prep', slot:'any', text:'Đi ngủ trước 23h', meta:'Target 7.5h ngủ' }
   ],
   // Tue, Fri
   oneSession: [
-    { id:'warmup_am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc' },
-    { id:'drill_am', text:'Buổi sáng (machine/light)', meta:'60 phút solo hoặc nhẹ' },
-    { id:'cooldown_am', text:'Cool-down sáng 5 phút', meta:'Stretch + nước' },
-    { id:'protein_breakfast', text:'Bữa sáng đủ protein', meta:'Recovery window' },
-    { id:'lunch', text:'Bữa trưa cân bằng', meta:'~600 kcal' },
-    { id:'snack', text:'Snack 15h', meta:'~250 kcal' },
-    { id:'dinner', text:'Bữa tối', meta:'~550 kcal' },
-    { id:'water', text:'Uống đủ 2L nước', meta:'' },
-    { id:'sleep_prep', text:'Đi ngủ trước 23h', meta:'' }
+    { id:'warmup_am', slot:'am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc' },
+    { id:'drill_am', slot:'am', text:'Buổi sáng (machine/light)', meta:'60 phút solo hoặc nhẹ' },
+    { id:'cooldown_am', slot:'am', text:'Cool-down sáng 5 phút', meta:'Stretch + nước' },
+    { id:'protein_breakfast', slot:'am', text:'Bữa sáng đủ protein', meta:'Recovery window' },
+    { id:'lunch', slot:'any', text:'Bữa trưa cân bằng', meta:'~600 kcal' },
+    { id:'snack', slot:'any', text:'Snack 15h', meta:'~250 kcal' },
+    { id:'dinner', slot:'any', text:'Bữa tối', meta:'~550 kcal' },
+    { id:'water', slot:'any', text:'Uống đủ 2L nước', meta:'' },
+    { id:'sleep_prep', slot:'any', text:'Đi ngủ trước 23h', meta:'' }
   ],
   // Sat - drill dài + CLB
   sat: [
-    { id:'warmup_am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc' },
-    { id:'drill_am', text:'Drill sáng 90 phút', meta:'Dài hơn các ngày khác' },
-    { id:'video_record', text:'Quay video 1 game', meta:'Để Sun review' },
-    { id:'cooldown_am', text:'Cool-down', meta:'' },
-    { id:'protein_breakfast', text:'Bữa sáng', meta:'~450 kcal, 25g protein' },
-    { id:'lunch', text:'Bữa trưa', meta:'' },
-    { id:'snack_pre_clb', text:'Snack pre-CLB', meta:'' },
-    { id:'warmup_pm', text:'Warm-up CLB 5 phút', meta:'' },
-    { id:'clb_match', text:'Match CLB 60 phút', meta:'' },
-    { id:'dinner', text:'Bữa tối', meta:'' },
-    { id:'water', text:'Đủ nước', meta:'' }
+    { id:'warmup_am', slot:'am', text:'Warm-up sáng 8 phút', meta:'Bắt buộc' },
+    { id:'drill_am', slot:'am', text:'Drill sáng 90 phút', meta:'Dài hơn các ngày khác' },
+    { id:'video_record', slot:'pm', text:'Quay video 1 game', meta:'Để Sun review' },
+    { id:'cooldown_am', slot:'am', text:'Cool-down', meta:'' },
+    { id:'protein_breakfast', slot:'am', text:'Bữa sáng', meta:'~450 kcal, 25g protein' },
+    { id:'lunch', slot:'any', text:'Bữa trưa', meta:'' },
+    { id:'snack_pre_clb', slot:'pm', text:'Snack pre-CLB', meta:'' },
+    { id:'warmup_pm', slot:'pm', text:'Warm-up CLB 5 phút', meta:'' },
+    { id:'clb_match', slot:'pm', text:'Match CLB 60 phút', meta:'' },
+    { id:'dinner', slot:'any', text:'Bữa tối', meta:'' },
+    { id:'water', slot:'any', text:'Đủ nước', meta:'' }
   ],
-  // Wed, Sun - rest
+  // Wed - rest
   rest: [
-    { id:'walk', text:'Đi bộ nhẹ 30 phút (tùy chọn)', meta:'Active recovery' },
-    { id:'mobility', text:'Mobility 15 phút', meta:'Vai, hông, gối' },
-    { id:'protein', text:'Vẫn ăn đủ protein 120g+', meta:'Calo có thể giảm' },
-    { id:'water', text:'Đủ nước', meta:'' },
-    { id:'sleep', text:'Ngủ thêm 30-60 phút', meta:'Recovery quan trọng' }
+    { id:'walk', slot:'any', text:'Đi bộ nhẹ 30 phút (tùy chọn)', meta:'Active recovery' },
+    { id:'mobility', slot:'any', text:'Mobility 15 phút', meta:'Vai, hông, gối' },
+    { id:'protein', slot:'any', text:'Vẫn ăn đủ protein 120g+', meta:'Calo có thể giảm' },
+    { id:'water', slot:'any', text:'Đủ nước', meta:'' },
+    { id:'sleep', slot:'any', text:'Ngủ thêm 30-60 phút', meta:'Recovery quan trọng' }
   ],
+  // Sun - rest + review
   sun: [
-    { id:'video_review', text:'Video review 30 phút', meta:'Xem game Sat 0.5x' },
-    { id:'note_pattern', text:'Ghi 1 pattern lặp lại', meta:'UE chỗ nào?' },
-    { id:'note_goal', text:'Viết mục tiêu tuần tới', meta:'1 cụ thể' },
-    { id:'walk', text:'Đi bộ nhẹ (tùy chọn)', meta:'' },
-    { id:'sleep', text:'Ngủ đủ 7.5h', meta:'' }
+    { id:'video_review', slot:'any', text:'Video review 30 phút', meta:'Xem game Sat 0.5x' },
+    { id:'note_pattern', slot:'any', text:'Ghi 1 pattern lặp lại', meta:'UE chỗ nào?' },
+    { id:'note_goal', slot:'any', text:'Viết mục tiêu tuần tới', meta:'1 cụ thể' },
+    { id:'walk', slot:'any', text:'Đi bộ nhẹ (tùy chọn)', meta:'' },
+    { id:'sleep', slot:'any', text:'Ngủ đủ 7.5h', meta:'' }
   ]
 };
 
-function getChecklistForToday() {
-  const dow = new Date().getDay();
+function getChecklistForDate(dateStr) {
+  // dateStr format: YYYY-MM-DD
+  const d = new Date(dateStr + 'T00:00:00');
+  const dow = d.getDay();
   if (dow === 1 || dow === 4) return CHECKLIST_TEMPLATES.twoSessions;
   if (dow === 2 || dow === 5) return CHECKLIST_TEMPLATES.oneSession;
   if (dow === 6) return CHECKLIST_TEMPLATES.sat;
   if (dow === 0) return CHECKLIST_TEMPLATES.sun;
   return CHECKLIST_TEMPLATES.rest; // Wed
+}
+
+function getChecklistForToday() {
+  return getChecklistForDate(todayKey());
 }
 
 const RUBRICS = [
@@ -1308,9 +1732,35 @@ const STORAGE_KEY = 'mflow_pickleball_v1';
 
 function getData() {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return { weights: [], rubrics: {}, checklists: {}, notes: {}, settings: { startDate: PLAN_START } };
-  try { return JSON.parse(raw); }
-  catch (e) { return { weights: [], rubrics: {}, checklists: {}, notes: {}, settings: { startDate: PLAN_START } }; }
+  if (!raw) {
+    // First-time user — seed with baseline weight
+    const initial = {
+      weights: [{ date: START_WEIGHT_DATE, kg: START_WEIGHT }],
+      rubrics: {}, checklists: {}, notes: {}, sessions: {}, sleep: {},
+      settings: { startDate: PLAN_START }
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+    return initial;
+  }
+  try {
+    const d = JSON.parse(raw);
+    // Migrate old data — add missing fields
+    if (!d.sessions) d.sessions = {};
+    if (!d.sleep) d.sleep = {};
+    // Seed baseline if user has no weights yet
+    if (!d.weights || d.weights.length === 0) {
+      d.weights = [{ date: START_WEIGHT_DATE, kg: START_WEIGHT }];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+    }
+    return d;
+  }
+  catch (e) {
+    return {
+      weights: [{ date: START_WEIGHT_DATE, kg: START_WEIGHT }],
+      rubrics: {}, checklists: {}, notes: {}, sessions: {}, sleep: {},
+      settings: { startDate: PLAN_START }
+    };
+  }
 }
 
 function saveData(data) {
@@ -1321,6 +1771,35 @@ function todayKey() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+
+// Currently selected date for viewing (defaults to today)
+let selectedDate = todayKey();
+
+function dateKey(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function parseDate(dateStr) {
+  return new Date(dateStr + 'T00:00:00');
+}
+
+function addDays(dateStr, days) {
+  const d = parseDate(dateStr);
+  d.setDate(d.getDate() + days);
+  return dateKey(d);
+}
+
+// Get Monday of week containing dateStr
+function weekMonday(dateStr) {
+  const d = parseDate(dateStr);
+  const dow = d.getDay();
+  const diff = dow === 0 ? -6 : 1 - dow; // Sunday-based -> Monday-based
+  d.setDate(d.getDate() + diff);
+  return dateKey(d);
+}
+
+// State: which Monday is the date strip showing
+let displayedWeekStart = weekMonday(selectedDate);
 
 function toast(msg) {
   const t = document.getElementById('toast');
@@ -1343,55 +1822,212 @@ function renderHeader() {
 // TODAY VIEW
 // ============================================================
 function renderToday() {
-  const dow = new Date().getDay();
+  const sel = parseDate(selectedDate);
+  const dow = sel.getDay();
   const sched = SCHEDULE[dow];
   document.getElementById('todayName').textContent = sched.name;
 
-  const sessionsEl = document.getElementById('todaySessions');
-  sessionsEl.innerHTML = '';
-  sched.sessions.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'hero-session ' + (s.type === 'rest' ? 'rest' : '');
-    div.innerHTML = `<span class="hero-session-time">${s.time}</span><span>${s.label}</span>`;
-    sessionsEl.appendChild(div);
-  });
-
-  renderPhaseBar();
+  renderSessionToggles(dow, sched);
+  renderDateNav();
+  renderDateContext();
   renderChecklist();
   renderWeightStats();
   renderWeightChart();
+  renderSleep();
   loadNote();
 }
 
-function renderPhaseBar() {
-  const week = currentWeek();
-  const bar = document.getElementById('phaseBar');
-  bar.innerHTML = '';
-  const ranges = [[1,6,1], [7,14,2], [15,20,3], [21,26,4]];
-  ranges.forEach(([start, end, p]) => {
+function renderSessionToggles(dow, sched) {
+  const container = document.getElementById('todaySessions');
+  container.innerHTML = '';
+
+  const data = getData();
+  const sessionsData = data.sessions[selectedDate] || {};
+
+  // 2 toggle slots: morning (am) and afternoon (pm)
+  // Determine suggestion from schedule
+  const amSuggested = sched.sessions.find(s => s.time !== '—' && parseInt(s.time) < 12);
+  const pmSuggested = sched.sessions.find(s => s.time !== '—' && parseInt(s.time) >= 12);
+
+  const slots = [
+    { id: 'am', label: 'Tập sáng', defaultTime: '6:30', suggested: amSuggested },
+    { id: 'pm', label: 'Tập chiều', defaultTime: '18:00', suggested: pmSuggested }
+  ];
+
+  slots.forEach(slot => {
+    const isDone = sessionsData[slot.id] === true;
+    const sug = slot.suggested;
     const div = document.createElement('div');
-    div.className = 'phase-seg';
-    if (week >= start && week <= end) div.classList.add('active');
-    else if (week > end) div.classList.add('done');
-    div.innerHTML = `P${p} · W${start}-${end}`;
-    bar.appendChild(div);
+    div.className = 'session-toggle' + (isDone ? ' done' : '') + (sug ? ' suggested' : '');
+    const timeLabel = sug ? sug.time : slot.defaultTime;
+    const labelText = sug ? sug.label : (slot.id === 'am' ? 'Không đề xuất' : 'Không đề xuất');
+
+    div.innerHTML = `
+      <div class="session-toggle-check"></div>
+      <div class="session-toggle-content">
+        <div class="session-toggle-time">${slot.label} · ${timeLabel}</div>
+        <div class="session-toggle-label">${labelText}</div>
+      </div>
+    `;
+    div.onclick = () => toggleSession(slot.id);
+    container.appendChild(div);
   });
+}
+
+function toggleSession(slotId) {
+  const data = getData();
+  if (!data.sessions) data.sessions = {};
+  if (!data.sessions[selectedDate]) data.sessions[selectedDate] = {};
+  const currentVal = data.sessions[selectedDate][slotId];
+  data.sessions[selectedDate][slotId] = !currentVal;
+  saveData(data);
+  renderToday();
+}
+
+function renderDateNav() {
+  const strip = document.getElementById('dateStrip');
+  strip.innerHTML = '';
+
+  const today = todayKey();
+  const dowNames = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  const data = getData();
+
+  for (let i = 0; i < 7; i++) {
+    const date = addDays(displayedWeekStart, i);
+    const d = parseDate(date);
+    const dowIdx = d.getDay();
+    const dayNum = d.getDate();
+
+    const cell = document.createElement('div');
+    cell.className = 'date-cell';
+
+    // Rest day styling
+    if (dowIdx === 3 || dowIdx === 0) cell.classList.add('rest'); // Wed, Sun
+
+    if (date === today) cell.classList.add('today');
+    if (date === selectedDate) cell.classList.add('selected');
+    if (date > today) cell.classList.add('future');
+
+    // Completed marker - if user ticked any session that day
+    const sessionsData = data.sessions[date] || {};
+    if (sessionsData.am || sessionsData.pm) {
+      cell.classList.add('completed');
+    }
+
+    cell.innerHTML = `
+      <div class="date-cell-dow">${dowNames[dowIdx]}</div>
+      <div class="date-cell-day">${dayNum}</div>
+    `;
+    cell.onclick = () => selectDate(date);
+    strip.appendChild(cell);
+  }
+}
+
+function renderDateContext() {
+  const ctx = document.getElementById('dateContext');
+  const today = todayKey();
+  const week = weekForDate(selectedDate);
+  const phase = phaseForWeek(week);
+
+  let timeContext = '';
+  let extraClass = '';
+  if (selectedDate === today) {
+    timeContext = 'Hôm nay';
+  } else if (selectedDate < today) {
+    const days = daysDiff(today, selectedDate);
+    timeContext = days === 1 ? 'Hôm qua' : `${days} ngày trước`;
+    extraClass = 'viewing-past';
+  } else {
+    const days = daysDiff(selectedDate, today);
+    timeContext = days === 1 ? 'Ngày mai' : `${days} ngày nữa`;
+    extraClass = 'viewing-future';
+  }
+
+  ctx.className = 'date-context ' + extraClass;
+  const showJumpBtn = selectedDate !== today;
+  ctx.innerHTML = `
+    <div>
+      <span class="date-context-week">Tuần ${week} · Phase ${phase}</span>
+      <span style="margin: 0 8px; color: var(--ink-mute);">·</span>
+      <span>${timeContext}</span>
+    </div>
+    <button class="date-context-jump-today ${showJumpBtn ? '' : 'hidden'}" onclick="jumpToToday()">↻ Hôm nay</button>
+  `;
+}
+
+function daysDiff(a, b) {
+  return Math.abs(Math.round((parseDate(a) - parseDate(b)) / 86400000));
+}
+
+function weekForDate(dateStr) {
+  const data = getData();
+  const start = parseDate(data.settings.startDate);
+  const target = parseDate(dateStr);
+  const diffDays = Math.floor((target - start) / 86400000);
+  return Math.max(1, Math.min(26, Math.floor(diffDays / 7) + 1));
+}
+
+function phaseForWeek(week) {
+  if (week <= 6) return 1;
+  if (week <= 14) return 2;
+  if (week <= 20) return 3;
+  return 4;
+}
+
+function selectDate(date) {
+  selectedDate = date;
+  // If selected outside current displayed week, shift week
+  const selMon = weekMonday(date);
+  if (selMon !== displayedWeekStart) displayedWeekStart = selMon;
+  renderToday();
+}
+
+function jumpToToday() {
+  selectedDate = todayKey();
+  displayedWeekStart = weekMonday(selectedDate);
+  renderToday();
+}
+
+function shiftWeek(direction) {
+  displayedWeekStart = addDays(displayedWeekStart, direction * 7);
+  renderDateNav();
 }
 
 function renderChecklist() {
   const data = getData();
-  const tk = todayKey();
-  const checked = data.checklists[tk] || {};
-  const items = getChecklistForToday();
+  const checked = data.checklists[selectedDate] || {};
+  const sessionsData = data.sessions[selectedDate] || {};
+  const allItems = getChecklistForDate(selectedDate);
+
+  // Filter: show 'any' always; show 'am' only if session.am ticked; show 'pm' only if session.pm ticked
+  const items = allItems.filter(item => {
+    if (item.slot === 'any') return true;
+    if (item.slot === 'am') return sessionsData.am === true;
+    if (item.slot === 'pm') return sessionsData.pm === true;
+    return true;
+  });
+
   const container = document.getElementById('checklistItems');
   container.innerHTML = '';
+
+  if (items.length === 0) {
+    container.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--ink-mute); font-size: 13px;">Tick "Tập sáng" hoặc "Tập chiều" ở trên để hiện checklist chi tiết.</div>`;
+    return;
+  }
+
   items.forEach(item => {
     const div = document.createElement('div');
     div.className = 'check-item' + (checked[item.id] ? ' done' : '');
+
+    // Add visual tag for am/pm/any
+    let slotBadge = '';
+    if (item.slot === 'am') slotBadge = '<span style="font-family: var(--mono); font-size: 9px; padding: 2px 6px; background: var(--gold-soft); color: var(--gold); border-radius: 4px; margin-right: 6px; text-transform: uppercase; letter-spacing: 0.05em;">Sáng</span>';
+    else if (item.slot === 'pm') slotBadge = '<span style="font-family: var(--mono); font-size: 9px; padding: 2px 6px; background: var(--blue-soft); color: var(--blue); border-radius: 4px; margin-right: 6px; text-transform: uppercase; letter-spacing: 0.05em;">Chiều</span>';
+
     div.innerHTML = `
       <div class="check-box"></div>
       <div style="flex:1">
-        <div class="check-text">${item.text}</div>
+        <div class="check-text">${slotBadge}${item.text}</div>
         ${item.meta ? `<div class="check-meta">${item.meta}</div>` : ''}
       </div>
     `;
@@ -1402,11 +2038,11 @@ function renderChecklist() {
 
 function toggleCheck(id) {
   const data = getData();
-  const tk = todayKey();
-  if (!data.checklists[tk]) data.checklists[tk] = {};
-  data.checklists[tk][id] = !data.checklists[tk][id];
+  if (!data.checklists[selectedDate]) data.checklists[selectedDate] = {};
+  data.checklists[selectedDate][id] = !data.checklists[selectedDate][id];
   saveData(data);
   renderChecklist();
+  renderDateNav(); // Update completed marker on strip
 }
 
 function logWeight() {
@@ -1417,25 +2053,36 @@ function logWeight() {
     return;
   }
   const data = getData();
-  const tk = todayKey();
-  const existingIdx = data.weights.findIndex(w => w.date === tk);
+  const existingIdx = data.weights.findIndex(w => w.date === selectedDate);
   if (existingIdx >= 0) data.weights[existingIdx].kg = val;
-  else data.weights.push({ date: tk, kg: val });
+  else data.weights.push({ date: selectedDate, kg: val });
   data.weights.sort((a,b) => a.date.localeCompare(b.date));
   saveData(data);
   input.value = '';
   renderWeightStats();
   renderWeightChart();
-  toast('Đã lưu cân: ' + val + 'kg');
+  const dateLabel = selectedDate === todayKey() ? 'hôm nay' : selectedDate.slice(5);
+  toast(`Đã lưu cân ${dateLabel}: ${val}kg`);
 }
 
 function renderWeightStats() {
   const data = getData();
+  // Show weight for selected date, fallback to latest
+  const sel = data.weights.find(w => w.date === selectedDate);
   const latest = data.weights[data.weights.length - 1];
-  const cur = latest ? latest.kg : null;
+  const cur = sel ? sel.kg : (latest ? latest.kg : null);
   document.getElementById('weightCurrent').innerHTML = (cur !== null ? cur : '--') + '<span class="weight-stat-unit">kg</span>';
   const remaining = cur !== null ? (cur - TARGET_WEIGHT_BASE).toFixed(1) : '--';
   document.getElementById('weightRemaining').innerHTML = remaining + '<span class="weight-stat-unit">kg</span>';
+
+  // Update placeholder
+  const input = document.getElementById('weightInput');
+  if (input) {
+    const dateLabel = selectedDate === todayKey() ? 'hôm nay' : selectedDate.slice(5).replace('-', '/');
+    input.placeholder = `Nhập cân ${dateLabel} (kg)`;
+    // Prefill if already logged for that date
+    input.value = sel ? sel.kg : '';
+  }
 }
 
 function renderWeightChart() {
@@ -1501,16 +2148,95 @@ function renderWeightChart() {
 
 function saveNote() {
   const data = getData();
-  const tk = todayKey();
-  data.notes[tk] = document.getElementById('todayNote').value;
+  data.notes[selectedDate] = document.getElementById('todayNote').value;
   saveData(data);
   toast('Đã lưu ghi chú');
 }
 
 function loadNote() {
   const data = getData();
-  const tk = todayKey();
-  document.getElementById('todayNote').value = data.notes[tk] || '';
+  document.getElementById('todayNote').value = data.notes[selectedDate] || '';
+}
+
+// ============================================================
+// SLEEP
+// ============================================================
+function computeSleepHours(bedtime, wake) {
+  // bedtime: "HH:MM" string, assumed previous evening
+  // wake: "HH:MM" string, assumed selected morning
+  // Returns hours as decimal, e.g. 7.5
+  if (!bedtime || !wake) return null;
+  const [bh, bm] = bedtime.split(':').map(Number);
+  const [wh, wm] = wake.split(':').map(Number);
+  let bedMin = bh * 60 + bm;
+  let wakeMin = wh * 60 + wm;
+  // If bedtime hour < wake hour AND bedtime >= 14:00, assume bedtime was previous day evening
+  // Actually simpler: if wake < bedtime in clock-time, it means crossed midnight
+  // E.g. bed 22:45, wake 6:15 → wake < bed (in minutes) → ngủ qua đêm
+  // E.g. bed 1:30, wake 9:00 → wake > bed → vẫn cùng ngày (đi ngủ sau 0h)
+  let diff;
+  if (wakeMin >= bedMin) {
+    // Could be either same day (slept after midnight, woke later) or weird
+    // If bedtime is AM (< 12), assume same calendar day
+    if (bh < 12) diff = wakeMin - bedMin;
+    else diff = (24 * 60 - bedMin) + wakeMin;
+  } else {
+    // wake < bed → crossed midnight
+    diff = (24 * 60 - bedMin) + wakeMin;
+  }
+  return Math.round(diff / 60 * 10) / 10; // 1 decimal
+}
+
+function renderSleep() {
+  const data = getData();
+  const sleepData = data.sleep[selectedDate] || {};
+  const bedtime = sleepData.bedtime || '';
+  const wake = sleepData.wake || '';
+
+  document.getElementById('sleepBedtime').value = bedtime;
+  document.getElementById('sleepWake').value = wake;
+
+  document.getElementById('sleepBedtimeDisplay').textContent = bedtime || '--:--';
+  document.getElementById('sleepWakeDisplay').textContent = wake || '--:--';
+
+  const totalEl = document.getElementById('sleepTotalDisplay');
+  const statusEl = document.getElementById('sleepStatusDisplay');
+
+  if (bedtime && wake) {
+    const hours = computeSleepHours(bedtime, wake);
+    totalEl.innerHTML = `${hours.toFixed(1)}<span class="weight-stat-unit">h</span>`;
+    if (hours >= 7) {
+      statusEl.textContent = `✓ Đủ ngủ (target 7.5h)`;
+      statusEl.className = 'sleep-stat-target good';
+    } else if (hours >= 6) {
+      statusEl.textContent = `Hơi thiếu (target 7.5h)`;
+      statusEl.className = 'sleep-stat-target warn';
+    } else {
+      statusEl.textContent = `Thiếu nhiều (target 7.5h)`;
+      statusEl.className = 'sleep-stat-target warn';
+    }
+  } else {
+    totalEl.innerHTML = `--<span class="weight-stat-unit">h</span>`;
+    statusEl.textContent = 'Target 7.5h';
+    statusEl.className = 'sleep-stat-target';
+  }
+}
+
+function logSleep() {
+  const bedtime = document.getElementById('sleepBedtime').value;
+  const wake = document.getElementById('sleepWake').value;
+  if (!bedtime && !wake) {
+    toast('Cần nhập ít nhất 1 giờ');
+    return;
+  }
+  const data = getData();
+  if (!data.sleep) data.sleep = {};
+  data.sleep[selectedDate] = { bedtime, wake };
+  saveData(data);
+  renderSleep();
+  renderDateNav(); // for completed marker
+  const dateLabel = selectedDate === todayKey() ? 'hôm nay' : selectedDate.slice(5);
+  toast(`Đã lưu giấc ngủ ${dateLabel}`);
 }
 
 // ============================================================
@@ -1810,6 +2536,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
+// Date nav arrows
+document.getElementById('datePrev').addEventListener('click', () => shiftWeek(-1));
+document.getElementById('dateNext').addEventListener('click', () => shiftWeek(1));
+
 // Enter key for weight input
 document.getElementById('weightInput').addEventListener('keypress', e => {
   if (e.key === 'Enter') logWeight();
@@ -1827,10 +2557,15 @@ function checkDateChange() {
   if (currentDate !== lastKnownDate) {
     // Day changed — refresh everything
     console.log('Date changed:', lastKnownDate, '→', currentDate);
+    // If user was viewing the previous "today", auto-advance them
+    const wasOnToday = selectedDate === lastKnownDate;
     lastKnownDate = currentDate;
+    if (wasOnToday) {
+      selectedDate = currentDate;
+      displayedWeekStart = weekMonday(selectedDate);
+    }
     renderHeader();
     renderToday();
-    // If user is on Progress or Rubric tab, those re-render on tab switch anyway
     if (document.querySelector('.view.active').id === 'view-progress') renderProgress();
     if (document.querySelector('.view.active').id === 'view-rubric') renderRubrics();
     toast('Đã chuyển sang ngày mới');
