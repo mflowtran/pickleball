@@ -1270,6 +1270,222 @@ body::before {
   .tab span { font-size: 8px; }
 }
 
+/* Profile card */
+.profile-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.profile-header {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sans);
+  transition: background 0.15s;
+}
+.profile-header:hover { background: var(--bg-elevated); }
+.profile-header:active { background: var(--bg-elevated); }
+
+.profile-header-text { flex: 1; min-width: 0; }
+
+.profile-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.profile-preview {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-chevron {
+  font-size: 14px;
+  color: var(--ink-mute);
+  margin-left: 12px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.profile-card.expanded .profile-chevron { transform: rotate(180deg); }
+
+.profile-body {
+  display: none;
+  padding: 0 18px 18px 18px;
+  border-top: 1px solid var(--line-soft);
+}
+.profile-card.expanded .profile-body { display: block; }
+
+.profile-field {
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.profile-field:last-child { border-bottom: none; }
+
+.profile-field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.profile-field-label {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.profile-edit-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+.profile-edit-btn:hover {
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
+}
+
+.profile-field-value {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.profile-field-input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  outline: none;
+  resize: vertical;
+  margin-bottom: 8px;
+}
+.profile-field-input:focus { border-color: var(--brand); }
+
+.profile-field-actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+.video-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 10px;
+  transition: all 0.15s;
+  align-items: center;
+}
+.video-card:hover {
+  background: var(--bg-card);
+  border-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.video-card:active { transform: translateY(0); }
+
+.video-thumb {
+  flex-shrink: 0;
+  width: 120px;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+  position: relative;
+}
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(31, 61, 44, 0.92);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  padding-left: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.video-info {
+  flex: 1;
+  min-width: 0;
+}
+.video-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.video-channel {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 480px) {
+  .video-thumb { width: 100px; }
+  .video-title { font-size: 13px; }
+}
+
 /* Rubric SVG + video link */
 .rubric-extras {
   margin-top: 14px;
@@ -1650,7 +1866,58 @@ body::before {
 
   <!-- VIEW: RUBRIC -->
   <div class="view" id="view-rubric">
-    <div class="section-title"><span class="num">01</span> Đánh giá kỹ năng</div>
+    <div class="section-title"><span class="num">01</span> Tóm tắt bản thân</div>
+    <div class="profile-card" id="profileCard">
+      <button class="profile-header" onclick="toggleProfile()">
+        <div class="profile-header-text">
+          <div class="profile-title">M Flow · Trần Ngọc</div>
+          <div class="profile-preview" id="profilePreview">BH mạnh · FH ổn định · Tennis convert · Live Flow</div>
+        </div>
+        <div class="profile-chevron" id="profileChevron">▾</div>
+      </button>
+      <div class="profile-body" id="profileBody">
+        <div class="profile-field">
+          <div class="profile-field-head">
+            <div class="profile-field-label">💪 Điểm mạnh</div>
+            <button class="profile-edit-btn" onclick="editProfile('strengths')">Sửa</button>
+          </div>
+          <div class="profile-field-value" id="profile-strengths"></div>
+          <textarea class="profile-field-input" id="profile-strengths-input" style="display:none;" rows="4"></textarea>
+          <div class="profile-field-actions" id="profile-strengths-actions" style="display:none;">
+            <button class="btn btn-sm" onclick="saveProfile('strengths')">Lưu</button>
+            <button class="btn btn-sm btn-ghost" onclick="cancelProfile('strengths')">Hủy</button>
+          </div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-field-head">
+            <div class="profile-field-label">🎯 Điểm yếu</div>
+            <button class="profile-edit-btn" onclick="editProfile('weaknesses')">Sửa</button>
+          </div>
+          <div class="profile-field-value" id="profile-weaknesses"></div>
+          <textarea class="profile-field-input" id="profile-weaknesses-input" style="display:none;" rows="4"></textarea>
+          <div class="profile-field-actions" id="profile-weaknesses-actions" style="display:none;">
+            <button class="btn btn-sm" onclick="saveProfile('weaknesses')">Lưu</button>
+            <button class="btn btn-sm btn-ghost" onclick="cancelProfile('weaknesses')">Hủy</button>
+          </div>
+        </div>
+
+        <div class="profile-field">
+          <div class="profile-field-head">
+            <div class="profile-field-label">🌿 Triết lý đánh bóng</div>
+            <button class="profile-edit-btn" onclick="editProfile('philosophy')">Sửa</button>
+          </div>
+          <div class="profile-field-value" id="profile-philosophy"></div>
+          <textarea class="profile-field-input" id="profile-philosophy-input" style="display:none;" rows="3"></textarea>
+          <div class="profile-field-actions" id="profile-philosophy-actions" style="display:none;">
+            <button class="btn btn-sm" onclick="saveProfile('philosophy')">Lưu</button>
+            <button class="btn btn-sm btn-ghost" onclick="cancelProfile('philosophy')">Hủy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="num">02</span> Đánh giá kỹ năng</div>
 
     <div class="filter-row" id="rubricFilter">
       <button class="filter-btn active" data-phase="all">Tất cả</button>
@@ -2116,6 +2383,8 @@ function getChecklistForToday() {
 }
 
 const SKILL_SVGS = {"p1_grip": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 400\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"400\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">DUAL GRIP — CONTINENTAL vs EASTERN/SW</text>\n  \n  <!-- Continental grip (left) -->\n  <g transform=\"translate(50, 70)\">\n    <text x=\"150\" y=\"20\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#2E75B6\">CONTINENTAL (Vị trí 2)</text>\n    <text x=\"150\" y=\"40\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\">Cho soft game: dink, volley, reset, serve, drop</text>\n    \n    <!-- Handle (octagonal end view) - 8 sides -->\n    <g transform=\"translate(150, 130)\">\n      <polygon points=\"-40,-16 -16,-40 16,-40 40,-16 40,16 16,40 -16,40 -40,16\" fill=\"#8B7355\" stroke=\"#333\" stroke-width=\"2\"/>\n      <!-- Bevel numbers -->\n      <text x=\"0\" y=\"-46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">1</text>\n      <text x=\"33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">2</text>\n      <text x=\"46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">3</text>\n      <text x=\"33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">4</text>\n      <text x=\"0\" y=\"55\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">5</text>\n      <text x=\"-33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">6</text>\n      <text x=\"-46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">7</text>\n      <text x=\"-33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">8</text>\n      \n      <!-- V mark on bevel 2 -->\n      <text x=\"36\" y=\"-23\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#C00000\">V</text>\n    </g>\n    \n    <text x=\"150\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" fill=\"#333\">Ngón cái (V) đặt trên bevel 2</text>\n    <text x=\"150\" y=\"240\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\" font-style=\"italic\">\"Như cầm búa\"</text>\n    \n    <!-- Paddle position indicator -->\n    <text x=\"150\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\" font-weight=\"bold\">Mặt vợt:</text>\n    <line x1=\"100\" y1=\"290\" x2=\"200\" y2=\"290\" stroke=\"#1F3864\" stroke-width=\"3\"/>\n    <text x=\"150\" y=\"305\" text-anchor=\"middle\" font-size=\"10\" fill=\"#666\">Vuông góc mặt đất</text>\n  </g>\n  \n  <!-- Divider -->\n  <line x1=\"350\" y1=\"80\" x2=\"350\" y2=\"340\" stroke=\"#CCC\" stroke-width=\"2\" stroke-dasharray=\"5,5\"/>\n  \n  <!-- Eastern/SW grip (right) -->\n  <g transform=\"translate(400, 70)\">\n    <text x=\"150\" y=\"20\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#C00000\">EASTERN/SW (Vị trí 3-4)</text>\n    <text x=\"150\" y=\"40\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\">Cho drive: backhand drive, forehand drive</text>\n    \n    <g transform=\"translate(150, 130)\">\n      <polygon points=\"-40,-16 -16,-40 16,-40 40,-16 40,16 16,40 -16,40 -40,16\" fill=\"#8B7355\" stroke=\"#333\" stroke-width=\"2\"/>\n      <text x=\"0\" y=\"-46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">1</text>\n      <text x=\"33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">2</text>\n      <text x=\"46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">3</text>\n      <text x=\"33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">4</text>\n      <text x=\"0\" y=\"55\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">5</text>\n      <text x=\"-33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">6</text>\n      <text x=\"-46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">7</text>\n      <text x=\"-33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">8</text>\n      \n      <!-- V mark spans bevel 3-4 -->\n      <text x=\"46\" y=\"20\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#C00000\">V</text>\n    </g>\n    \n    <text x=\"150\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" fill=\"#333\">Ngón cái (V) đặt sâu bevel 3-4</text>\n    <text x=\"150\" y=\"240\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\" font-style=\"italic\">\"Như bắt tay vợt\"</text>\n    \n    <text x=\"150\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\" font-weight=\"bold\">Mặt vợt:</text>\n    <line x1=\"120\" y1=\"305\" x2=\"180\" y2=\"275\" stroke=\"#C00000\" stroke-width=\"3\"/>\n    <text x=\"150\" y=\"325\" text-anchor=\"middle\" font-size=\"10\" fill=\"#666\">Hơi nghiêng — topspin tự nhiên</text>\n  </g>\n  \n  <!-- Bottom note -->\n  <rect x=\"50\" y=\"355\" width=\"600\" height=\"35\" fill=\"#FFF4E6\" stroke=\"#E89A2C\" stroke-width=\"1\"/>\n  <text x=\"350\" y=\"375\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#8B6914\">SKILL QUAN TRỌNG: Switch grip nhanh, không cần nhìn — drill 5 phút/buổi</text>\n</svg>", "p1_kitchen": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 480\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"480\" fill=\"#FAFAFA\"/>\n  \n  <!-- Court dimensions: 6.10m x 13.41m, scale ~40px/m -->\n  <!-- Total court: 244 x 537, but rotated for landscape: 537w x 244h -->\n  <!-- Center at 350, 240. Court 540x244 -->\n  \n  <g transform=\"translate(80, 118)\">\n    <!-- Full court outline -->\n    <rect x=\"0\" y=\"0\" width=\"540\" height=\"244\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"3\"/>\n    \n    <!-- Net (center vertical) -->\n    <line x1=\"270\" y1=\"-15\" x2=\"270\" y2=\"259\" stroke=\"#000\" stroke-width=\"4\"/>\n    <text x=\"270\" y=\"-22\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\">LƯỚI</text>\n    \n    <!-- Kitchen (NVZ) - 2.13m = ~85px from net -->\n    <rect x=\"185\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <rect x=\"270\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"227\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"227\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    <text x=\"313\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"313\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    \n    <!-- Transition zone -->\n    <rect x=\"80\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <rect x=\"355\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <text x=\"132\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"132\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    <text x=\"408\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"408\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    \n    <!-- Baseline area -->\n    <text x=\"40\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"40\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    <text x=\"500\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"500\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    \n    <!-- Center service line -->\n    <line x1=\"80\" y1=\"122\" x2=\"185\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    <line x1=\"355\" y1=\"122\" x2=\"460\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    \n    <!-- Kitchen line markers -->\n    <line x1=\"185\" y1=\"0\" x2=\"185\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <line x1=\"355\" y1=\"0\" x2=\"355\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"185\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    <text x=\"355\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    \n    <!-- Dimensions -->\n    <text x=\"270\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\">13.41m (44ft)</text>\n    <line x1=\"0\" y1=\"265\" x2=\"540\" y2=\"265\" stroke=\"#888\" stroke-width=\"0.5\"/>\n    <line x1=\"0\" y1=\"262\" x2=\"0\" y2=\"268\" stroke=\"#888\"/>\n    <line x1=\"540\" y1=\"262\" x2=\"540\" y2=\"268\" stroke=\"#888\"/>\n    \n    <text x=\"-15\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\" transform=\"rotate(-90, -15, 125)\">6.10m (20ft)</text>\n  </g>\n  \n  <!-- Title -->\n  <text x=\"350\" y=\"35\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">SÂN PICKLEBALL — 3 VÙNG CHÍNH</text>\n  <text x=\"350\" y=\"55\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Kích thước thật: 6.10m × 13.41m</text>\n  \n  <!-- Legend -->\n  <g transform=\"translate(80, 410)\">\n    <rect x=\"0\" y=\"0\" width=\"20\" height=\"14\" fill=\"#FFF3B0\" stroke=\"#666\"/>\n    <text x=\"28\" y=\"12\" font-size=\"11\">Kitchen (NVZ) — không volley</text>\n    \n    <rect x=\"220\" y=\"0\" width=\"20\" height=\"14\" fill=\"#C8E0F0\"/>\n    <text x=\"248\" y=\"12\" font-size=\"11\">Transition Zone — đi qua nhanh</text>\n    \n    <rect x=\"460\" y=\"0\" width=\"20\" height=\"14\" fill=\"#E8F0E8\" stroke=\"#666\"/>\n    <text x=\"488\" y=\"12\" font-size=\"11\">Baseline area — serve/return</text>\n  </g>\n</svg>", "p2_drop": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 400\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"400\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">THIRD SHOT: DROP vs DRIVE (so sánh quỹ đạo)</text>\n  \n  <!-- Side view of court -->\n  <g transform=\"translate(60, 80)\">\n    <!-- Ground -->\n    <line x1=\"0\" y1=\"250\" x2=\"580\" y2=\"250\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <!-- Net (center) -->\n    <line x1=\"290\" y1=\"100\" x2=\"290\" y2=\"250\" stroke=\"#666\" stroke-width=\"3\"/>\n    <text x=\"290\" y=\"92\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">LƯỚI (91cm)</text>\n    \n    <!-- Kitchen zones -->\n    <rect x=\"205\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <rect x=\"290\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <text x=\"247\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen mình</text>\n    <text x=\"332\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen đối phương</text>\n    \n    <!-- Baseline labels -->\n    <line x1=\"0\" y1=\"245\" x2=\"0\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"0\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline mình</text>\n    <text x=\"30\" y=\"270\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">●</text>\n    <text x=\"30\" y=\"298\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Vị trí đánh</text>\n    \n    <line x1=\"580\" y1=\"245\" x2=\"580\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"580\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline đối phương</text>\n    \n    <!-- DROP arc (cao, mềm) - green -->\n    <path d=\"M 30 250 Q 200 30, 330 250\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\" stroke-dasharray=\"0\"/>\n    <text x=\"200\" y=\"35\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#2E7D32\">DROP — Arc cao, mềm</text>\n    <text x=\"200\" y=\"50\" text-anchor=\"middle\" font-size=\"10\" fill=\"#2E7D32\">Bóng rơi trong kitchen đối phương</text>\n    \n    <!-- Drop landing point -->\n    <circle cx=\"330\" cy=\"250\" r=\"6\" fill=\"#2E7D32\" stroke=\"#fff\" stroke-width=\"2\"/>\n    \n    <!-- DRIVE arc (thấp, nhanh) - red -->\n    <path d=\"M 30 250 Q 290 120, 540 230\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"3\"/>\n    <text x=\"430\" y=\"140\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#C62828\">DRIVE — Đường thấp, nhanh</text>\n    <text x=\"430\" y=\"155\" text-anchor=\"middle\" font-size=\"10\" fill=\"#C62828\">Bóng đi sâu, ép đối phương</text>\n    \n    <!-- Drive landing point -->\n    <circle cx=\"540\" cy=\"230\" r=\"6\" fill=\"#C62828\" stroke=\"#fff\" stroke-width=\"2\"/>\n  </g>\n  \n  <!-- Decision rules box -->\n  <rect x=\"60\" y=\"345\" width=\"580\" height=\"50\" fill=\"#F5F5F5\" stroke=\"#999\" stroke-width=\"1\"/>\n  <text x=\"70\" y=\"365\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Quy tắc đọc bóng:</text>\n  <text x=\"70\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng cao + return thấp → DRIVE (khai thác backhand mạnh của M Flow)</text>\n  <text x=\"380\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng thấp + return cao → DROP (chậm rãi, chiếm kitchen)</text>\n</svg>", "p3_stack": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">STACKING POSITION</text>\n  \n  <!-- Left: Normal -->\n  <g transform=\"translate(40, 70)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#2E7D32\">VỊ TRÍ BÌNH THƯỜNG</text>\n    \n    <!-- Mini court -->\n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    <text x=\"130\" y=\"35\" text-anchor=\"middle\" font-size=\"9\">LƯỚI</text>\n    \n    <!-- Kitchen lines -->\n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"170\" y1=\"40\" x2=\"170\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Player A (top) - left side -->\n    <circle cx=\"45\" cy=\"100\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <!-- Player B (top) - right side -->\n    <circle cx=\"45\" cy=\"220\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Opponents -->\n    <circle cx=\"215\" cy=\"100\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">X</text>\n    <circle cx=\"215\" cy=\"220\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">Y</text>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">A trái sân, B phải sân</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Forehand A → giữa</text>\n  </g>\n  \n  <!-- Right: Stacking -->\n  <g transform=\"translate(380, 70)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#C62828\">STACKING (khi serve)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#FFF4E6\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    <text x=\"130\" y=\"35\" text-anchor=\"middle\" font-size=\"9\">LƯỚI</text>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"170\" y1=\"40\" x2=\"170\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Both players on same side (top = phía mình) -->\n    <circle cx=\"45\" cy=\"160\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"45\" cy=\"195\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"45\" y=\"200\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Arrow showing B will switch -->\n    <path d=\"M 45 215 Q 80 250, 70 200\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"2\" marker-end=\"url(#arrow2)\"/>\n    <text x=\"100\" y=\"240\" font-size=\"10\" fill=\"#C62828\" font-style=\"italic\">B switch sau serve</text>\n    \n    <!-- Opponents -->\n    <circle cx=\"215\" cy=\"100\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">X</text>\n    <circle cx=\"215\" cy=\"220\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">Y</text>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Cả 2 cùng bên khi B serve</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Sau serve B sang phải, A giữ trái</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrow2\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#C62828\"/>\n    </marker>\n  </defs>\n  \n  <!-- Bottom: Why stack -->\n  <rect x=\"40\" y=\"365\" width=\"620\" height=\"45\" fill=\"#F5F5F5\" stroke=\"#999\"/>\n  <text x=\"50\" y=\"385\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Tại sao stack:</text>\n  <text x=\"50\" y=\"402\" font-size=\"11\" fill=\"#444\">• Giữ backhand mạnh của M Flow ở vị trí ưu tiên   • Tránh điểm yếu bị target   • Forehand người kia luôn ở giữa</text>\n</svg>", "p3_rope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">SỢI DÂY THỪNG — Di chuyển đồng bộ</text>\n  <text x=\"350\" y=\"50\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">2 người di chuyển như bị buộc dây vô hình</text>\n  \n  <!-- Left: Before -->\n  <g transform=\"translate(40, 80)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#2E7D32\">TRƯỚC (vị trí gốc)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n    \n    <!-- Players at original position -->\n    <circle cx=\"55\" cy=\"120\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"55\" cy=\"200\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"205\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Rope between -->\n    <line x1=\"55\" y1=\"134\" x2=\"55\" y2=\"186\" stroke=\"#8B4513\" stroke-width=\"3\" stroke-dasharray=\"3,2\"/>\n    <text x=\"75\" y=\"165\" font-size=\"10\" fill=\"#8B4513\" font-style=\"italic\">~3-4m</text>\n    \n    <!-- Ball coming -->\n    <circle cx=\"180\" cy=\"160\" r=\"6\" fill=\"#FFEB3B\" stroke=\"#F57C00\" stroke-width=\"2\"/>\n    <text x=\"195\" y=\"158\" font-size=\"10\" fill=\"#F57C00\">bóng vào</text>\n    <text x=\"195\" y=\"170\" font-size=\"10\" fill=\"#F57C00\">phải sân</text>\n  </g>\n  \n  <!-- Right: After move -->\n  <g transform=\"translate(380, 80)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#C62828\">SAU (di chuyển đồng bộ)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#FFF4E6\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n    \n    <!-- Original ghost positions -->\n    <circle cx=\"55\" cy=\"120\" r=\"14\" fill=\"#1F3864\" opacity=\"0.2\"/>\n    <circle cx=\"55\" cy=\"200\" r=\"14\" fill=\"#1F3864\" opacity=\"0.2\"/>\n    \n    <!-- New positions - both shifted right by ~25px -->\n    <circle cx=\"55\" cy=\"170\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"55\" cy=\"240\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"245\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Movement arrows -->\n    <path d=\"M 55 134 Q 35 152, 55 156\" fill=\"none\" stroke=\"#1F3864\" stroke-width=\"2\" marker-end=\"url(#arrow3)\"/>\n    <path d=\"M 55 214 Q 35 227, 55 226\" fill=\"none\" stroke=\"#1F3864\" stroke-width=\"2\" marker-end=\"url(#arrow3)\"/>\n    \n    <!-- Rope -->\n    <line x1=\"55\" y1=\"184\" x2=\"55\" y2=\"226\" stroke=\"#8B4513\" stroke-width=\"3\" stroke-dasharray=\"3,2\"/>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Cả 2 dịch xuống cùng lúc</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Khoảng cách giữ ~3-4m</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrow3\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#1F3864\"/>\n    </marker>\n  </defs>\n  \n  <!-- Rules box -->\n  <rect x=\"40\" y=\"370\" width=\"620\" height=\"40\" fill=\"#F5F5F5\" stroke=\"#999\"/>\n  <text x=\"50\" y=\"388\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Nguyên tắc:</text>\n  <text x=\"50\" y=\"403\" font-size=\"11\" fill=\"#444\">Partner sang phải 1m → mình sang phải 1m. Đóng khoảng trống. Quá xa = lộ giữa. Quá gần = lộ 2 cánh.</text>\n</svg>", "p3_anti": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">ANTI-BANGER: MIDDLE NEUTRALIZATION</text>\n  <text x=\"350\" y=\"50\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Khi banger drive — đẩy bóng về middle (KHÔNG đánh angle)</text>\n  \n  <!-- Mini court -->\n  <g transform=\"translate(150, 80)\">\n    <rect x=\"0\" y=\"0\" width=\"400\" height=\"260\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"200\" y1=\"0\" x2=\"200\" y2=\"260\" stroke=\"#333\" stroke-width=\"3\"/>\n    <text x=\"200\" y=\"-8\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">LƯỚI</text>\n    \n    <!-- Kitchen lines -->\n    <line x1=\"135\" y1=\"0\" x2=\"135\" y2=\"260\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"265\" y1=\"0\" x2=\"265\" y2=\"260\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Kitchen shading -->\n    <rect x=\"135\" y=\"0\" width=\"65\" height=\"260\" fill=\"#FFF3B0\" opacity=\"0.4\"/>\n    <rect x=\"200\" y=\"0\" width=\"65\" height=\"260\" fill=\"#FFF3B0\" opacity=\"0.4\"/>\n    \n    <!-- M Flow side (left) -->\n    <circle cx=\"120\" cy=\"90\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"120\" y=\"95\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">M</text>\n    \n    <circle cx=\"120\" cy=\"170\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"120\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">P</text>\n    \n    <!-- Opponents (right) -->\n    <circle cx=\"280\" cy=\"90\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"280\" y=\"95\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">X</text>\n    \n    <circle cx=\"280\" cy=\"170\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"280\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">Y</text>\n    \n    <!-- BAD: Drive to angle -->\n    <path d=\"M 120 130 Q 220 50, 350 90\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"2\" stroke-dasharray=\"4,3\" marker-end=\"url(#arrowR)\"/>\n    <text x=\"290\" y=\"60\" font-size=\"10\" fill=\"#C62828\" font-weight=\"bold\">SAI: Angle</text>\n    <text x=\"270\" y=\"73\" font-size=\"9\" fill=\"#C62828\">(banger counter dễ)</text>\n    \n    <!-- GOOD: To middle -->\n    <path d=\"M 120 130 L 280 130\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\" marker-end=\"url(#arrowG)\"/>\n    <circle cx=\"280\" cy=\"130\" r=\"8\" fill=\"#2E7D32\" opacity=\"0.4\"/>\n    <text x=\"305\" y=\"135\" font-size=\"11\" fill=\"#2E7D32\" font-weight=\"bold\">ĐÚNG</text>\n    <text x=\"305\" y=\"148\" font-size=\"9\" fill=\"#2E7D32\">Middle</text>\n    \n    <!-- Question mark between opponents -->\n    <text x=\"280\" y=\"135\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\" fill=\"#fff\">?</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrowR\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#C62828\"/>\n    </marker>\n    <marker id=\"arrowG\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#2E7D32\"/>\n    </marker>\n  </defs>\n  \n  <!-- Why box -->\n  <rect x=\"40\" y=\"360\" width=\"620\" height=\"50\" fill=\"#E8F5E9\" stroke=\"#2E7D32\" stroke-width=\"1\"/>\n  <text x=\"50\" y=\"378\" font-size=\"12\" font-weight=\"bold\" fill=\"#2E7D32\">Tại sao middle là vũ khí chống banger:</text>\n  <text x=\"50\" y=\"395\" font-size=\"11\" fill=\"#444\">• Bóng giữa = 2 người đều có thể đánh = đắn đo = lỗi</text>\n  <text x=\"350\" y=\"395\" font-size=\"11\" fill=\"#444\">• Banger ghét slow game, ghét bóng buộc phải drop</text>\n</svg>"};
+
+const SKILL_EMBEDS = {"p1_grip": {"id": "bPpbiXa-TVU", "title": "#1 Most Versatile Pickleball Grip (Continental)", "channel": "PrimeTime Pickleball"}, "p1_dink": {"id": "k6Rw-wXMCgE", "title": "Figure 8 Pickleball Dinking Drill", "channel": "PrimeTime Pickleball"}, "p1_reset": {"id": "iBQ3PV_Q9bM", "title": "Mastering The RESET in 3 Simple Steps", "channel": "Briones Pickleball"}, "p1_serve": {"id": "xOzaRBMDHeg", "title": "The SECRET To A POWERFUL Pickleball Serve", "channel": "Briones Pickleball"}, "p1_kitchen": {"id": "ReNgTKsdN2M", "title": "Pickleball Paddle Positioning Masterclass", "channel": "Pickleball coaching"}, "p2_drop": {"id": "IX-yFrWSOL8", "title": "How To Hit A Perfect 3rd Shot Drop", "channel": "Briones Pickleball"}, "p2_bh": {"id": null, "title": "Backhand Drive Technique", "channel": "Briones / PrimeTime", "search": "briones+pickleball+backhand+drive"}, "p2_trans": {"id": null, "title": "Surviving The Transition Zone", "channel": "Briones", "search": "briones+transition+zone+pickleball"}, "p2_lob": {"id": null, "title": "How To Defend The Lob", "channel": "PrimeTime / Briones", "search": "how+to+defend+lob+pickleball"}, "p3_stack": {"id": null, "title": "Stacking in Pickleball Explained", "channel": "Briones", "search": "pickleball+stacking+explained+briones"}, "p3_rope": {"id": null, "title": "Doubles Movement Like Pros", "channel": "PrimeTime", "search": "pickleball+doubles+positioning+movement"}, "p3_anti": {"id": null, "title": "How To Beat Bangers", "channel": "PrimeTime / Briones", "search": "how+to+beat+bangers+pickleball"}, "p3_fh": {"id": null, "title": "Forehand Takes Middle Rule", "channel": "Briones", "search": "briones+forehand+takes+middle"}, "p4_hand": {"id": null, "title": "Hand Battle At Kitchen Line", "channel": "PrimeTime", "search": "pickleball+hand+battle+kitchen+line"}, "p4_speed": {"id": null, "title": "When To Speed Up The Ball", "channel": "Briones", "search": "pickleball+when+to+speed+up"}, "p4_psych": {"id": null, "title": "Mental Game Of Pickleball", "channel": "PrimeTime", "search": "mental+game+pickleball"}, "p4_read": {"id": null, "title": "Reading Your Opponent's Weaknesses", "channel": "Briones", "search": "pickleball+read+opponent+weakness"}};
 
 const SKILL_VIDEOS = {"p1_grip": ["Continental grip pickleball", "briones+pickleball+continental+grip"], "p1_dink": ["Dinking drills consistency", "pickleball+dinking+drills+consistency"], "p1_reset": ["Pickleball reset shot tutorial", "pickleball+reset+drills+soft+hands"], "p1_serve": ["Deep serve technique", "briones+pickleball+serve+tutorial"], "p1_kitchen": ["Kitchen line positioning", "briones+pickleball+kitchen+line+positioning"], "p2_drop": ["Third shot drop mastery", "briones+third+shot+drop"], "p2_bh": ["Backhand drive pickleball", "primetime+pickleball+backhand+drive"], "p2_trans": ["Transition zone pickleball", "briones+transition+zone+pickleball"], "p2_lob": ["How to defend lob", "how+to+defend+lob+pickleball"], "p3_stack": ["Stacking in pickleball", "pickleball+stacking+explained"], "p3_rope": ["Doubles positioning pickleball", "pickleball+doubles+positioning+pro"], "p3_anti": ["How to beat bangers", "how+to+beat+bangers+pickleball"], "p3_fh": ["Forehand takes middle", "briones+forehand+takes+middle"], "p4_hand": ["Hand battle kitchen line", "pickleball+hand+battle+kitchen"], "p4_speed": ["When to speed up", "pickleball+when+to+speed+up"], "p4_psych": ["Mental game pickleball", "mental+game+pickleball"], "p4_read": ["Read opponent weakness", "pickleball+read+opponent+weakness"]};
 
@@ -2748,6 +3017,113 @@ function logSleep() {
 }
 
 // ============================================================
+// PROFILE (Tóm tắt bản thân)
+// ============================================================
+const PROFILE_DEFAULTS = {
+  strengths: `• Backhand mạnh, nặng, sâu — vũ khí chính (hiếm với người tennis chuyển sang)
+• Forehand ổn định, bóng "ngọt đanh"
+• Kinetic chain tốt: cả người là một khối, dùng vợt để gia lực
+• Nền tảng tennis: footwork, đọc bóng, timing đã sẵn`,
+  weaknesses: `• Mới pickleball — kitchen positioning chưa thành phản xạ
+• Hay quên Continental, dùng grip 3-4 cho cả soft game
+• Backswing còn dài kiểu tennis, cần compact hơn cho dink
+• Soft hand cho reset/dink chưa thuần — vẫn gồng tay
+• BMI 27.4 — cần giảm 6.5kg để tốc độ + giảm tải gối`,
+  philosophy: `Thân là một khối uyển chuyển — đánh bóng truyền toàn lực, không tán.
+Tâm đặt vào Điểm Chạm — mỗi cú đánh là một tác phẩm nhỏ của cả cơ thể.
+Hứng lên từ dòng sông những Điểm Chạm liên tục — đó là hạnh phúc.`
+};
+
+// Old defaults that should be auto-migrated to new defaults (one-time, only if user hasn't customized)
+const PROFILE_OLD_DEFAULTS = {
+  philosophy: `Đừng cố thắng bằng lực.
+Hãy thắng bằng cấu trúc, sự ổn định và khả năng kiểm soát nhịp độ.`
+};
+
+function getProfile() {
+  const data = getData();
+  if (!data.profile) {
+    data.profile = { ...PROFILE_DEFAULTS };
+    saveData(data);
+  }
+  // Migrate: if current value matches an old default, upgrade to new default
+  let migrated = false;
+  for (const k of Object.keys(PROFILE_OLD_DEFAULTS)) {
+    if (data.profile[k] && data.profile[k].trim() === PROFILE_OLD_DEFAULTS[k].trim()) {
+      data.profile[k] = PROFILE_DEFAULTS[k];
+      migrated = true;
+    }
+  }
+  // Fill in any missing keys with defaults (forward-compat)
+  for (const k of Object.keys(PROFILE_DEFAULTS)) {
+    if (!(k in data.profile)) {
+      data.profile[k] = PROFILE_DEFAULTS[k];
+      migrated = true;
+    }
+  }
+  if (migrated) saveData(data);
+  return data.profile;
+}
+
+function renderProfile() {
+  const p = getProfile();
+  document.getElementById('profile-strengths').textContent = p.strengths;
+  document.getElementById('profile-weaknesses').textContent = p.weaknesses;
+  document.getElementById('profile-philosophy').textContent = p.philosophy;
+
+  // Build preview: first line of strengths (truncated) + philosophy hint
+  const firstStrength = (p.strengths.split('\n')[0] || '').replace(/^[•\-\*]\s*/, '').trim();
+  const philosophyShort = (p.philosophy.split('\n')[0] || '').trim();
+  const preview = firstStrength.length > 0
+    ? `${firstStrength} · ${philosophyShort}`.slice(0, 80)
+    : 'Tap để xem chi tiết';
+  document.getElementById('profilePreview').textContent = preview;
+}
+
+function toggleProfile() {
+  const card = document.getElementById('profileCard');
+  card.classList.toggle('expanded');
+  // Persist expand state
+  const data = getData();
+  data.profileExpanded = card.classList.contains('expanded');
+  saveData(data);
+}
+
+function editProfile(field) {
+  const p = getProfile();
+  const valueEl = document.getElementById(`profile-${field}`);
+  const inputEl = document.getElementById(`profile-${field}-input`);
+  const actionsEl = document.getElementById(`profile-${field}-actions`);
+
+  inputEl.value = p[field] || '';
+  valueEl.style.display = 'none';
+  inputEl.style.display = 'block';
+  actionsEl.style.display = 'flex';
+  inputEl.focus();
+}
+
+function saveProfile(field) {
+  const inputEl = document.getElementById(`profile-${field}-input`);
+  const newValue = inputEl.value.trim();
+  const data = getData();
+  if (!data.profile) data.profile = { ...PROFILE_DEFAULTS };
+  data.profile[field] = newValue;
+  saveData(data);
+
+  document.getElementById(`profile-${field}`).style.display = 'block';
+  inputEl.style.display = 'none';
+  document.getElementById(`profile-${field}-actions`).style.display = 'none';
+  renderProfile();
+  toast('Đã lưu');
+}
+
+function cancelProfile(field) {
+  document.getElementById(`profile-${field}`).style.display = 'block';
+  document.getElementById(`profile-${field}-input`).style.display = 'none';
+  document.getElementById(`profile-${field}-actions`).style.display = 'none';
+}
+
+// ============================================================
 // RUBRIC VIEW
 // ============================================================
 let activePhaseFilter = 'all';
@@ -2799,7 +3175,7 @@ function renderRubrics() {
       <textarea class="rubric-note" placeholder="Ghi chú (cần cải thiện, điều làm tốt...)" data-rubric-note="${r.id}">${rubData.note || ''}</textarea>
       <div class="rubric-extras">
         ${SKILL_SVGS[r.id] ? `<button class="rubric-svg-toggle" onclick="toggleRubricSvg('${r.id}')">📐 Xem sơ đồ minh họa</button><div class="rubric-svg-wrap" id="svg-${r.id}">${SKILL_SVGS[r.id]}</div>` : ''}
-        ${SKILL_VIDEOS[r.id] ? `<a class="vid-link" target="_blank" href="https://www.youtube.com/results?search_query=${SKILL_VIDEOS[r.id][1]}">▶ Video: ${SKILL_VIDEOS[r.id][0]}</a>` : ''}
+        ${renderSkillVideo(r.id)}
       </div>
       <div class="rubric-meta">
         <span>${lastUpdate}</span>
@@ -3041,7 +3417,7 @@ document.querySelectorAll('.tab').forEach(btn => {
     document.getElementById('view-' + btn.dataset.view).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (btn.dataset.view === 'progress') renderProgress();
-    if (btn.dataset.view === 'rubric') renderRubrics();
+    if (btn.dataset.view === 'rubric') { renderProfile(); renderRubrics(); }
     if (btn.dataset.view === 'meal') renderMealMenu();
   });
 });
@@ -3123,6 +3499,35 @@ function resetTimer() {
   timerSecondsLeft = 8 * 60;
   document.getElementById('warmupTimer').textContent = formatTimer(timerSecondsLeft);
   document.getElementById('timerStartBtn').textContent = '▶ Bắt đầu';
+}
+
+
+function renderSkillVideo(skillId) {
+  const embed = SKILL_EMBEDS[skillId];
+  if (!embed) {
+    if (SKILL_VIDEOS[skillId]) {
+      return `<a class="vid-link" target="_blank" href="https://www.youtube.com/results?search_query=${SKILL_VIDEOS[skillId][1]}">▶ Tìm video YouTube: ${SKILL_VIDEOS[skillId][0]}</a>`;
+    }
+    return '';
+  }
+  if (embed.id) {
+    // Thumbnail card linking directly to YouTube
+    return `
+      <a class="video-card" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${embed.id}">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/${embed.id}/hqdefault.jpg" alt="${embed.title}" loading="lazy" onerror="this.style.display='none'">
+          <div class="video-play-icon">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">${embed.title}</div>
+          <div class="video-channel">${embed.channel} · YouTube ↗</div>
+        </div>
+      </a>
+    `;
+  } else if (embed.search) {
+    return `<a class="vid-link" target="_blank" href="https://www.youtube.com/results?search_query=${embed.search}">▶ Tìm video: ${embed.title} (${embed.channel})</a>`;
+  }
+  return '';
 }
 
 function toggleRubricSvg(id) {
@@ -3225,7 +3630,7 @@ function checkDateChange() {
     renderHeader();
     renderToday();
     if (document.querySelector('.view.active').id === 'view-progress') renderProgress();
-    if (document.querySelector('.view.active').id === 'view-rubric') renderRubrics();
+    if (document.querySelector('.view.active').id === 'view-rubric') { renderProfile(); renderRubrics(); }
     toast('Đã chuyển sang ngày mới');
   }
 }
@@ -3261,6 +3666,14 @@ window.addEventListener('focus', checkDateChange);
 // ============================================================
 renderHeader();
 renderToday();
+renderProfile();
+// Restore profile expand state
+(function() {
+  const data = getData();
+  if (data.profileExpanded) {
+    document.getElementById('profileCard').classList.add('expanded');
+  }
+})();
 renderRubrics();
 startDateCheck();
 
