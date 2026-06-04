@@ -894,7 +894,203 @@ body::before {
   border-color: var(--brand);
 }
 
+/* === PLAYSTYLE CARD (M Flow personalized) === */
+.playstyle-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+.playstyle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.ps-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--brand);
+  color: #fff;
+  padding: 4px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+.playstyle-intro {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.playstyle-intro strong { color: var(--brand); }
+.ps-block { margin-bottom: 18px; }
+.ps-h {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.ps-num {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+.ps-p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.ps-p strong { color: var(--ink); }
+.ps-list { margin-top: 8px; }
+.ps-li {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  padding: 5px 0 5px 14px;
+  border-left: 2px solid var(--line);
+  margin-bottom: 6px;
+}
+.ps-li strong { color: var(--ink); }
+.ps-attack { color: var(--accent); font-weight: 600; }
+.ps-defense { color: var(--blue); font-weight: 600; }
+.ps-term { color: var(--brand); font-weight: 600; }
+.ps-ready {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+.ps-ready-h {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: 7px;
+}
+.ps-signature {
+  background: linear-gradient(135deg, #FBEDE8 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 4px 0 18px 0;
+}
+.ps-signature-h {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 7px;
+}
+.ps-signature em { color: var(--ink-mute); font-style: italic; }
+.ps-weak {
+  background: #F4F1EA;
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+.ps-weak-h {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #9A7B2E;
+  margin-bottom: 9px;
+}
+.ps-weak-item {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.ps-weak-item:last-child { margin-bottom: 0; }
+.ps-weak-item strong { color: var(--ink); }
+
+.ps-golden {
+  background: var(--brand);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 20px;
+}
+.ps-golden-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.ps-golden-item {
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.55;
+  display: flex;
+  gap: 9px;
+  margin-bottom: 9px;
+}
+.ps-golden-item:last-child { margin-bottom: 0; }
+.ps-golden-item strong { color: #fff; }
+.ps-golden-num {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  background: var(--gold);
+  color: var(--brand-deep);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 /* === MERGE SECTIONS (Dinh dưỡng / Tiến độ inside Hôm nay) === */
+.goal-banner {
+  background: var(--brand);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.goal-banner-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.goal-banner-period {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  margin: 3px 0 14px 0;
+}
+.goal-banner-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.goal-item-icon { font-size: 22px; flex-shrink: 0; }
+.goal-item-text { display: flex; flex-direction: column; line-height: 1.3; }
+.goal-item-text strong { font-size: 16px; color: #fff; }
+.goal-item-text span { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 1px; }
 .merge-section {
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
@@ -3012,6 +3208,21 @@ body::before {
       <div class="merge-body" id="mergeProgress">
 <div class="section-title"><span class="num">01</span> Tổng quan</div>
 
+    <div class="goal-banner">
+      <div class="goal-banner-title">Mục tiêu 6 tháng</div>
+      <div class="goal-banner-period">01/06/2026 → 01/12/2026</div>
+      <div class="goal-banner-items">
+        <div class="goal-item">
+          <div class="goal-item-icon">🎾</div>
+          <div class="goal-item-text"><strong>Trình độ 4.0</strong><span>từ người mới → 4.0 DUPR/skill</span></div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-item-icon">⚖️</div>
+          <div class="goal-item-text"><strong>66kg</strong><span>base · 64kg stretch (từ 72.5kg)</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="quick-grid">
       <div class="quick-card">
         <div class="quick-card-label">Tuần</div>
@@ -3284,6 +3495,87 @@ body::before {
 <div class="section-title"><span class="num">03</span> Chiến thuật</div>
     <div id="tacticsList"></div>
 
+    <div class="section-title"><span class="num">04</span> Lối chơi của M Flow</div>
+    <div class="playstyle-card">
+      <div class="playstyle-tags">
+        <span class="ps-tag">Grip 3-4 sâu (Eastern)</span>
+        <span class="ps-tag">Backhand 2 tay</span>
+        <span class="ps-tag">Forehand topspin nặng</span>
+      </div>
+      <div class="playstyle-intro">Ba đặc điểm này không rời rạc — chúng gộp thành <strong>một lối chơi</strong>. Bạn không phải mẫu "chạm mềm" thuần. Bạn là <strong>tay topspin có lực</strong>, hai cánh đều bạt được spin, tay nhanh nhờ không đổi grip. Một trục đồng bộ: <strong>cánh trái là lá chắn phản công, cánh phải là mũi khoan cày xoáy</strong>. Lối thắng của bạn là kéo trận đấu về vùng spin &amp; tốc độ, ép đối thủ lộ sơ hở — không phải chịu đựng dink dai.</div>
+
+      <div class="ps-ready">
+        <div class="ps-ready-h">Thế đứng sẵn sàng — Lá chắn 70/30</div>
+        <div class="ps-p">Vì backhand 2 tay là vũ khí, để vợt che <strong>~70% người về bên trái</strong> (ngực qua nách trái), tay trái luôn đặt sẵn trên cán = bệ phóng 2 tay. Lộ nhẹ bên phải để <span class="ps-attack">dụ đối thủ đánh vào forehand topspin</span> của bạn.</div>
+        <div class="ps-list">
+          <div class="ps-li">Bóng vào <strong>giữa / trái</strong> → khóa 2 tay, dập hoặc chặn bằng trái.</div>
+          <div class="ps-li">Bóng sang <strong>phải</strong> → buông tay trái, vẩy cẳng tay phải là có forehand đóng góc.</div>
+        </div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">1</span> Grip cố định = tay nhanh nhất ở bếp</div>
+        <div class="ps-p">Người nền tennis thường thua ở trận chiến tay (hand battle) vì mất 0.5s lấn cấn đổi grip. Bạn đã loại bỏ điểm yếu đó. Hệ quả: <strong>bạn nên là người châm ngòi tốc độ</strong>, không phải người chờ. Bóng nổi ngang hông trở lên → speed-up ngay, ra đòn trước nửa nhịp. Nhắm <span class="ps-attack">body hoặc tay thuận</span> đối thủ.</div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">2</span> Soft game bù bằng spin, không bằng touch</div>
+        <div class="ps-p">Grip 3-4 sâu khép mặt vợt, nên dink/reset "chết" (phẳng) dễ bị nâng cao. Giải pháp không phải đổi grip:</div>
+        <div class="ps-list">
+          <div class="ps-li"><strong>Dink thuận tay</strong>: hạ trọng tâm, dùng <span class="ps-term">gối nâng bóng</span> — KHÔNG hất cổ tay (grip sâu sẽ làm mặt vợt quặp, bóng rúc lưới). Ưu tiên slice dink hoặc đẩy sâu góc.</div>
+          <div class="ps-li"><strong>Dink trái 2 tay</strong>: cực ổn định, khó hỏng.</div>
+          <div class="ps-li"><strong>Roll dink</strong>: vuốt nhẹ lên cho bóng có topspin — dùng spin thay touch. Roll dink của bạn nặng và khó đỡ hơn dink thường.</div>
+        </div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">3</span> Backhand 2 tay = mỏ neo &amp; cú giấu bài</div>
+        <div class="ps-list">
+          <div class="ps-li"><strong>Lấy bóng giữa bằng backhand</strong> (thay luật "forehand takes middle"). Giữa sân là của bạn.</div>
+          <div class="ps-li"><strong>Đấu backhand–backhand</strong>: đẩy chéo sang trái đối thủ. Họ yếu, bạn mạnh — bạn thắng trao đổi.</div>
+          <div class="ps-li"><strong>Two-handed reset</strong> ở vùng đệm: 2 tay giữ chắc trục, thả lỏng cổ tay lúc chạm để hấp thụ lực, thả bóng vào bếp. Chuẩn xác hơn reset 1 tay rất nhiều.</div>
+          <div class="ps-li"><strong>Flick 2 tay giấu bài</strong>: cùng tư thế như dink trái, giật cổ tay trên chớp nhoáng → bắn xoáy vào <span class="ps-attack">vai phải đối thủ (chicken-wing)</span>. Hai tay trợ lực → tốc độ + chính xác khủng khiếp.</div>
+        </div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">4</span> Forehand topspin = mũi khoan</div>
+        <div class="ps-p"><strong>Cày ải đáy sân</strong>: vuốt topspin cực nặng, bóng qua lưới 0.5-1m rồi cắm sát vạch đáy đối phương, nảy cao vào ngực ép họ lùi và trả bóng nổi. <strong>Lên lưới</strong>: <span class="ps-attack">forehand roll volley</span> — cuộn cổ tay nhanh, grip sâu bao bóng tạo topspin gắt, cắm vào chân hoặc góc chữ V của đối thủ.</div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">5</span> Vùng chuyển tiếp — trái thủ, phải block</div>
+        <div class="ps-list">
+          <div class="ps-li"><span class="ps-defense">Bị ép vào trái</span> → two-handed reset thả vào bếp (thế mạnh, dùng thoải mái).</div>
+          <div class="ps-li"><span class="ps-defense">Bị bắn mạnh vào phải</span> → KHÔNG vung ra sau. Bước chân phải rộng, hạ gối, mở nhẹ mặt vợt, <strong>push-block</strong> chéo vào bếp. Dùng lực của họ.</div>
+        </div>
+      </div>
+
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">6</span> Cú thứ 3: ưu tiên DRIVE</div>
+        <div class="ps-p">Bạn có hai cánh topspin mạnh → <strong>drive là lựa chọn thật, không phải phương án B</strong>. Chiến thuật <span class="ps-term">"drive rồi drop"</span>: drive cú 3 ép đối thủ đỡ khó/nổi bóng; nếu họ chặn được, cú 5 mới drop để lên bếp. Drive trước, drop sau.</div>
+      </div>
+
+      <div class="ps-signature">
+        <div class="ps-signature-h">⚡ Đòn tủ — Dụ phải rồi kết liễu</div>
+        <div class="ps-p">Đứng lệch trái, để hở khoảng trống bên phải kích thích đối thủ đánh vào. Họ vừa bắn sang phải → <span class="ps-attack">forehand counter bạt topspin cắm thẳng xuống đất</span>, kết thúc điểm. <em>Lưu ý: chỉ dùng khi forehand counter đã ổn định dưới áp lực. Với người mới, thử dần — đối thủ giỏi sẽ tấn công khoảng hở liên tục.</em></div>
+      </div>
+
+      <div class="ps-weak">
+        <div class="ps-weak-h">Hai điểm yếu phải bù</div>
+        <div class="ps-weak-item"><strong>1. Bóng bắn thẳng vào rốn/ngực</strong> (kẹt giữa FH và BH): luôn ưu tiên <strong>trái 2 tay che vùng này</strong> — giật cùi chỏ trái ra sau, block bằng mặt trái. Đừng cố xoay sang forehand (grip sâu làm mặt quặp, bóng rúc lưới nhà).</div>
+        <div class="ps-weak-item"><strong>2. Bộ chân lười</strong>: grip Eastern + trái 2 tay BẮT BUỘC di chuyển. Split-step nhún nhẹ trước khi đối thủ chạm bóng; bước rộng để người ở cạnh bóng, <strong>không bao giờ với tay theo bóng</strong>.</div>
+      </div>
+
+      <div class="ps-golden">
+        <div class="ps-golden-title">Bốn nguyên tắc vàng cho bạn</div>
+        <div class="ps-golden-item"><span class="ps-golden-num">1</span> Kéo trận đấu về <strong>spin &amp; tốc độ</strong> — đừng để bị lôi vào trận dink chết kéo dài.</div>
+        <div class="ps-golden-item"><span class="ps-golden-num">2</span> <strong>Giữa sân và cánh trái là lãnh thổ của bạn</strong> — backhand 2 tay thống trị ở đó.</div>
+        <div class="ps-golden-item"><span class="ps-golden-num">3</span> Tay nhanh nhờ grip cố định → <strong>châm ngòi trước</strong>, đừng chờ.</div>
+        <div class="ps-golden-item"><span class="ps-golden-num">4</span> <strong>Split-step liên tục</strong> — chân lười là kẻ thù số 1 của lối chơi này.</div>
+      </div>
+    </div>
+
     <div class="pull-quote">Ban đầu chỉ là một quả bóng. Sau đó là State, Intent, Capability, Freedom. Cuối cùng — lại chỉ là một quả bóng.</div>
   </div>
 
@@ -3334,7 +3626,7 @@ body::before {
 // ============================================================
 // DATA: Plan structure
 // ============================================================
-const PLAN_START = '2026-05-26'; // M Flow's official start: Monday May 26, 2026
+const PLAN_START = '2026-06-01'; // M Flow's official start: Monday June 1, 2026 (6-month plan → end ~01/12/2026)
 const TARGET_WEIGHT_BASE = 66;
 const TARGET_WEIGHT_STRETCH = 64;
 const START_WEIGHT = 72.5;
@@ -3541,6 +3833,12 @@ function getData() {
     // Migrate old data — add missing fields
     if (!d.sessions) d.sessions = {};
     if (!d.sleep) d.sleep = {};
+    if (!d.settings) d.settings = {};
+    // Migrate plan start date: update old default (26/05) to current PLAN_START
+    if (!d.settings.startDate || d.settings.startDate === '2026-05-26') {
+      d.settings.startDate = PLAN_START;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+    }
     // Seed baseline if user has no weights yet
     if (!d.weights || d.weights.length === 0) {
       d.weights = [{ date: START_WEIGHT_DATE, kg: START_WEIGHT }];
@@ -4143,7 +4441,7 @@ const PROFILE_DEFAULTS = {
 • Forehand ổn định, bóng "ngọt đanh"
 • Kinetic chain tốt: cả người là một khối, dùng vợt để gia lực
 • Nền tảng tennis: footwork, đọc bóng, timing đã sẵn
-• Grip 3 (Continental sâu) cố định mọi cú — không đổi grip, dồn tinh chỉnh vào Điểm Chạm`,
+• Grip 3-4 sâu (Eastern, thiên topspin) cố định mọi cú — không đổi grip, dồn tinh chỉnh vào Điểm Chạm`,
   weaknesses: `• Mới pickleball — kitchen positioning chưa thành phản xạ
 • Backswing còn dài kiểu tennis, cần compact hơn cho dink
 • Soft hand cho reset/dink chưa thuần — vẫn gồng tay
@@ -4165,7 +4463,12 @@ const PROFILE_OLD_STRENGTH_LIST = [
   `• Backhand mạnh, nặng, sâu — vũ khí chính (hiếm với người tennis chuyển sang)
 • Forehand ổn định, bóng "ngọt đanh"
 • Kinetic chain tốt: cả người là một khối, dùng vợt để gia lực
-• Nền tảng tennis: footwork, đọc bóng, timing đã sẵn`
+• Nền tảng tennis: footwork, đọc bóng, timing đã sẵn`,
+  `• Backhand mạnh, nặng, sâu — vũ khí chính (hiếm với người tennis chuyển sang)
+• Forehand ổn định, bóng "ngọt đanh"
+• Kinetic chain tốt: cả người là một khối, dùng vợt để gia lực
+• Nền tảng tennis: footwork, đọc bóng, timing đã sẵn
+• Grip 3 (Continental sâu) cố định mọi cú — không đổi grip, dồn tinh chỉnh vào Điểm Chạm`
 ];
 
 // Old defaults that should be auto-migrated to new defaults (one-time, only if user hasn't customized)
