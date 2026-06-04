@@ -1213,6 +1213,132 @@ body::before {
   text-align: center;
 }
 .theory-matrix svg { width: 100%; height: auto; display: block; }
+
+/* Interactive matrix grid */
+.matrix-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+.matrix-ytitle {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 8px 0;
+}
+.matrix-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  gap: 5px;
+  align-items: center;
+}
+.matrix-rowlabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 4px;
+  white-space: nowrap;
+}
+.matrix-cell {
+  background: #FAF8F2;
+  border: 1px solid #E2DBC9;
+  border-radius: 8px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.15s;
+}
+.matrix-cell:hover, .matrix-cell.active {
+  border-color: var(--brand);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.matrix-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+.matrix-shot {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.1;
+}
+.matrix-collabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  padding-top: 4px;
+}
+.matrix-xtitle {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-top: 6px;
+}
+.matrix-detail {
+  margin-top: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 60px;
+}
+.matrix-detail-hint {
+  font-size: 12px;
+  color: var(--ink-mute);
+  font-style: italic;
+  text-align: center;
+  padding: 8px 0;
+}
+.md-coord {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.md-x { color: var(--ink-mute); font-weight: 400; }
+.md-shot {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.md-shot strong { color: var(--ink); }
+.md-tend {
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-left: 10px;
+  border-left: 3px solid var(--gold);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.md-note {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.md-note .jargon { color: var(--ink-mute); opacity: 0.55; font-style: italic; }
+.md-note .theory-term { color: var(--brand); font-weight: 600; }
 .theory-matrix-cap {
   font-size: 11px;
   color: var(--ink-mute);
@@ -3055,55 +3181,13 @@ body::before {
 
       <div class="theory-matrix">
         <div class="theory-matrix-title">Ma trận D1 × D2 — 12 ô tọa độ</div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" font-family="Geist, Arial, sans-serif">
-  <rect width="360" height="330" fill="transparent"/>
-  <text x="14" y="160" font-size="10" font-weight="600" fill="#1F3D2C" text-anchor="middle" transform="rotate(-90 14 160)">CAO ĐỘ BÓNG (D2)</text>
-  <text x="200" y="322" font-size="10" font-weight="600" fill="#1F3D2C" text-anchor="middle">PHẦN SÂN (D1)</text>
-  <text x="52" y="48" font-size="9" fill="#C44827" text-anchor="end" font-weight="600">Rất cao</text>
-  <text x="52" y="110" font-size="9" fill="#C4622F" text-anchor="end">Cao</text>
-  <text x="52" y="172" font-size="9" fill="#9A8A3B" text-anchor="end">Vừa</text>
-  <text x="52" y="234" font-size="9" fill="#3E6B3A" text-anchor="end" font-weight="600">Thấp</text>
-  <text x="100" y="286" font-size="9" font-weight="600" fill="#1F3D2C" text-anchor="middle">Baseline</text>
-  <text x="198" y="286" font-size="9" font-weight="600" fill="#1F3D2C" text-anchor="middle">Chuyển tiếp</text>
-  <text x="296" y="286" font-size="9" font-weight="600" fill="#1F3D2C" text-anchor="middle">Bếp</text>
-  <rect x="58" y="24" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="103.0" cy="40" r="5" fill="#C44827"/>
-  <text x="103.0" y="62" font-size="10.5" fill="#5A5346" text-anchor="middle">Smash</text>
-  <rect x="58" y="86" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="103.0" cy="102" r="5" fill="#D2703A"/>
-  <text x="103.0" y="124" font-size="10.5" fill="#5A5346" text-anchor="middle">Drive+</text>
-  <rect x="58" y="148" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="103.0" cy="164" r="5" fill="#C49A3B"/>
-  <text x="103.0" y="186" font-size="10.5" fill="#5A5346" text-anchor="middle">Drive</text>
-  <rect x="58" y="210" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="103.0" cy="226" r="5" fill="#5A8A4B"/>
-  <text x="103.0" y="248" font-size="10.5" fill="#5A5346" text-anchor="middle">3rd Drop</text>
-  <rect x="156" y="24" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="201.0" cy="40" r="5" fill="#C44827"/>
-  <text x="201.0" y="62" font-size="10.5" fill="#5A5346" text-anchor="middle">Overhead</text>
-  <rect x="156" y="86" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="201.0" cy="102" r="5" fill="#D2703A"/>
-  <text x="201.0" y="124" font-size="10.5" fill="#5A5346" text-anchor="middle">Volley</text>
-  <rect x="156" y="148" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="201.0" cy="164" r="5" fill="#C49A3B"/>
-  <text x="201.0" y="186" font-size="10.5" fill="#5A5346" text-anchor="middle">Block</text>
-  <rect x="156" y="210" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="201.0" cy="226" r="5" fill="#5A8A4B"/>
-  <text x="201.0" y="248" font-size="10.5" fill="#5A5346" text-anchor="middle">Reset</text>
-  <rect x="254" y="24" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="299.0" cy="40" r="5" fill="#C44827"/>
-  <text x="299.0" y="62" font-size="10.5" fill="#5A5346" text-anchor="middle">Smash</text>
-  <rect x="254" y="86" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="299.0" cy="102" r="5" fill="#D2703A"/>
-  <text x="299.0" y="124" font-size="10.5" fill="#5A5346" text-anchor="middle">Flick</text>
-  <rect x="254" y="148" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="299.0" cy="164" r="5" fill="#C49A3B"/>
-  <text x="299.0" y="186" font-size="10.5" fill="#5A5346" text-anchor="middle">Roll</text>
-  <rect x="254" y="210" width="90" height="54" rx="7" fill="#FAF8F2" stroke="#E2DBC9" stroke-width="1"/>
-  <circle cx="299.0" cy="226" r="5" fill="#5A8A4B"/>
-  <text x="299.0" y="248" font-size="10.5" fill="#5A5346" text-anchor="middle">Dink</text>
-</svg>
-        <div class="theory-matrix-cap">Màu ô theo độ cao bóng: <span style="color:#3E6B3A;font-weight:600">xanh lá</span> (bóng thấp → thiên thủ) chuyển dần sang <span style="color:#C44827;font-weight:600">đỏ</span> (bóng cao → thiên công). Tên cú đánh (in nghiêng) chỉ là <em>hệ quả</em> — sinh ra từ tọa độ, không phải điểm xuất phát.</div>
+        <div class="matrix-wrap">
+          <div class="matrix-ytitle">CAO ĐỘ BÓNG (D2)</div>
+          <div class="matrix-grid" id="matrixGrid"></div>
+        </div>
+        <div class="matrix-xtitle">PHẦN SÂN (D1)</div>
+        <div class="matrix-detail" id="matrixDetail"></div>
+        <div class="theory-matrix-cap">Màu chấm theo độ cao bóng: <span style="color:#3E6B3A;font-weight:600">xanh lá</span> (thấp → thiên thủ) → <span style="color:#C44827;font-weight:600">đỏ</span> (cao → thiên công). <strong>Chạm hoặc di chuột vào một ô</strong> để xem hướng dẫn cú đánh đó.</div>
       </div>
       <div class="theory-block theory-5d">
         <div class="theory-head"><span class="theory-tag theory-tag-5d">Out of Map</span> nơi nhà vô địch chơi</div>
@@ -4369,6 +4453,75 @@ function collapseAllCells() {
 }
 
 // --- Ý đồ chiến thuật (Tầng 2) ---
+// Interactive D1×D2 matrix in Triết lý tab
+const MATRIX_POS = [
+  { id: 'baseline', name: 'Baseline' },
+  { id: 'transition', name: 'Chuyển tiếp' },
+  { id: 'kitchen', name: 'Bếp' }
+];
+const MATRIX_H = [
+  { id: 'veryhigh', name: 'Rất cao', dot: '#C44827', tend: 'Thiên công — bóng nổi cao, cơ hội dứt điểm' },
+  { id: 'high', name: 'Cao', dot: '#D2703A', tend: 'Thiên công — tăng tốc, ép đối thủ' },
+  { id: 'mid', name: 'Vừa', dot: '#C49A3B', tend: 'Trung tính — chọn công hay thủ tùy thế' },
+  { id: 'low', name: 'Thấp', dot: '#5A8A4B', tend: 'Thiên thủ — xử lý khéo, giữ bóng thấp' }
+];
+const MATRIX_SHORT = {
+  baseline_veryhigh:'Smash', baseline_high:'Drive+', baseline_mid:'Drive', baseline_low:'3rd Drop',
+  transition_veryhigh:'Overhead', transition_high:'Volley', transition_mid:'Block', transition_low:'Reset',
+  kitchen_veryhigh:'Smash', kitchen_high:'Flick', kitchen_mid:'Roll', kitchen_low:'Dink'
+};
+
+function renderMatrix() {
+  const grid = document.getElementById('matrixGrid');
+  if (!grid) return;
+  let html = '';
+  // 4 rows (heights) × (1 row-label + 3 position cells)
+  MATRIX_H.forEach(h => {
+    html += `<div class="matrix-rowlabel" style="color:${h.dot}">${h.name}</div>`;
+    MATRIX_POS.forEach(pos => {
+      const key = pos.id + '_' + h.id;
+      const short = MATRIX_SHORT[key] || '?';
+      html += `<button class="matrix-cell" data-key="${key}" onmouseenter="showMatrixDetail('${key}')" onclick="showMatrixDetail('${key}')">
+        <span class="matrix-dot" style="background:${h.dot}"></span>
+        <span class="matrix-shot">${short}</span>
+      </button>`;
+    });
+  });
+  // bottom row: empty corner + 3 position labels
+  html += '<div></div>';
+  MATRIX_POS.forEach(pos => {
+    html += `<div class="matrix-collabel">${pos.name}</div>`;
+  });
+  grid.innerHTML = html;
+
+  // Default detail hint
+  const detail = document.getElementById('matrixDetail');
+  if (detail && !detail.dataset.shown) {
+    detail.innerHTML = '<div class="matrix-detail-hint">Chạm hoặc di chuột vào một ô để xem hướng dẫn cú đánh.</div>';
+  }
+}
+
+function showMatrixDetail(key) {
+  const detail = document.getElementById('matrixDetail');
+  if (!detail) return;
+  detail.dataset.shown = '1';
+
+  const [posId, hId] = key.split('_');
+  const pos = MATRIX_POS.find(p => p.id === posId);
+  const h = MATRIX_H.find(x => x.id === hId);
+  const info = CELL_INFO[key] || { shot: '?', note: '' };
+
+  // mark active cell
+  document.querySelectorAll('.matrix-cell').forEach(c => c.classList.toggle('active', c.dataset.key === key));
+
+  detail.innerHTML = `
+    <div class="md-coord"><span class="md-d1">${pos.name}</span> <span class="md-x">×</span> <span class="md-d2" style="color:${h.dot}">${h.name}</span></div>
+    <div class="md-shot">Thường gọi: <strong>${info.shot}</strong></div>
+    <div class="md-tend" style="border-left-color:${h.dot}">${h.tend}</div>
+    <div class="md-note">${formatNote(info.note)}</div>
+  `;
+}
+
 function renderTactics() {
   const container = document.getElementById('tacticsList');
   container.innerHTML = '';
@@ -4655,6 +4808,7 @@ document.querySelectorAll('.tab').forEach(btn => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (btn.dataset.view === 'today') { renderProgress(); renderMealMenu(); }
     if (btn.dataset.view === 'rubric') { renderProfile(); renderRubrics(); }
+    if (btn.dataset.view === 'philosophy') renderMatrix();
     if (btn.dataset.view === 'journal') { journalDate = selectedDate; renderJournal(); }
   });
 });
@@ -4919,6 +5073,7 @@ renderProfile();
   }
 })();
 renderRubrics();
+renderMatrix();
 renderJournal();
 startDateCheck();
 
