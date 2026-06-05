@@ -1072,6 +1072,17 @@ body::before {
 }
 .hb-train-p strong { color: #5A4A20; }
 .hb-train-p em { font-style: italic; }
+.hb-rhythm-fig {
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 10px 8px;
+  margin: 4px 0 12px;
+}
+.hb-rhythm-fig svg { width: 100%; height: auto; display: block; }
+.ps-grip-fig { background: var(--bg-elevated); border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px; margin: 14px 0; }
+.ps-grip-fig svg { width: 100%; height: auto; display: block; }
+.ps-grip-cap { font-size: 12px; color: var(--ink-soft); line-height: 1.5; margin-top: 8px; text-align: center; }
+.ps-grip-cap strong { color: var(--accent); }
 
 .hb-freedom {
   background: var(--brand);
@@ -1549,6 +1560,8 @@ body::before {
 .dim-d2 .dim-badge { background: #3A5A78; }
 .dim-d3 .dim-badge { background: #C44827; }
 .dim-d4 .dim-badge { background: #C49A3B; }
+.dim-p1 .dim-badge { background: #3A5A78; }
+.dim-p2 .dim-badge { background: #C44827; }
 .dim-body { flex: 1; padding-top: 1px; }
 .dim-name {
   font-size: 15px;
@@ -1692,6 +1705,8 @@ body::before {
   text-align: center;
   margin-top: 6px;
 }
+.md-illust { background: var(--bg-card); border: 1px solid var(--line-soft); border-radius: 10px; padding: 8px; margin-bottom: 12px; }
+.md-illust svg { width: 100%; height: auto; display: block; }
 .matrix-detail {
   margin-top: 12px;
   background: var(--bg-card);
@@ -2062,7 +2077,10 @@ body::before {
 }
 .coord-head:hover { background: var(--bg-elevated); }
 
-.coord-head-left { flex: 1; min-width: 0; }
+.coord-head-left { flex: 1; min-width: 0; display: flex; align-items: center; gap: 11px; }
+.coord-ladder { flex-shrink: 0; }
+.coord-ladder svg { display: block; }
+.coord-head-left-text { flex: 1; min-width: 0; }
 .coord-height-tag {
   font-family: var(--serif);
   font-size: 16px;
@@ -2243,30 +2261,33 @@ body::before {
 
 .rating {
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
   margin-top: 4px;
 }
 
 .rating-dot {
-  flex: 1;
-  height: 36px;
-  border-radius: 8px;
-  border: 1.5px solid var(--line);
-  background: var(--bg-elevated);
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid #D8D2C4;
+  background: #EFEDE7;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 600;
-  color: var(--ink-mute);
+  color: #9A948A;
   transition: all 0.15s;
 }
 
 .rating-dot:hover {
   border-color: var(--ink-soft);
-  background: var(--bg-card);
+  color: var(--ink-soft);
 }
 
 .rating-dot.selected {
@@ -2280,6 +2301,10 @@ body::before {
 .rating-dot.selected[data-val="3"] { background: #C49A3B; border-color: #C49A3B; }
 .rating-dot.selected[data-val="4"] { background: #7A8B4A; border-color: #7A8B4A; }
 .rating-dot.selected[data-val="5"] { background: #5A7A4B; border-color: #5A7A4B; }
+.rating-dot.selected[data-val="1.5"] { background: #CC5F32; border-color: #CC5F32; }
+.rating-dot.selected[data-val="2.5"] { background: #CC883C; border-color: #CC883C; }
+.rating-dot.selected[data-val="3.5"] { background: #9F9242; border-color: #9F9242; }
+.rating-dot.selected[data-val="4.5"] { background: #6A824A; border-color: #6A824A; }
 
 .rubric-meta {
   font-family: var(--mono);
@@ -3717,19 +3742,34 @@ body::before {
       </div>
 
       <div class="hb-train">
-        <div class="hb-train-h">Cách rèn: chỉ đếm nhịp của mình</div>
-        <div class="hb-count-intro">Tiếng GÕ của đối thủ chỉ là tín hiệu để chú ý — <strong>nghe, không đếm</strong>. Chỉ đếm từ lúc bóng thuộc về mình:</div>
-        <div class="hb-count">
-          <div class="hb-count-mode">Bóng có nảy (dưới sân, chậm)</div>
-          <div class="hb-count-step"><span class="hb-count-num">2</span><span class="hb-count-txt"><strong>Tiếng RƠI</strong> — bóng nảy sân mình</span></div>
-          <div class="hb-count-gap">⌇ nửa nhịp — mắt đọc · tâm chọn ⌇</div>
-          <div class="hb-count-step hb-count-hit"><span class="hb-count-num">3</span><span class="hb-count-txt"><strong>VUNG VỢT</strong> — quyết định &amp; đánh</span></div>
+        <div class="hb-train-h">Cách rèn: nghe nhịp, đừng đếm</div>
+        <div class="hb-count-intro">Hai mốc âm thanh, không phải con số: <strong>TIK</strong> (mở khe) và <strong>TOK</strong> (nhả bóng). Nửa nhịp sống trong <strong>KHE giữa hai tiếng</strong> — chỗ chân đặt, thân vào khối, mặt vợt chờ. TIK <strong>mở cửa</strong>, không phải hô xuất phát: ở lại trong khe rồi mới TOK.</div>
+        <div class="hb-rhythm-fig">
+          <svg viewBox="0 0 320 212" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Arial, sans-serif">
+            <text x="12" y="20" font-size="9" font-weight="600" fill="#5A554C">BASELINE · CHUYỂN TIẾP — bóng có nảy</text>
+            <line x1="40" y1="58" x2="284" y2="58" stroke="#E0DAC9" stroke-width="2"/>
+            <rect x="74" y="46" width="172" height="24" rx="6" fill="#F2E5C0"/>
+            <text x="160" y="62" text-anchor="middle" font-size="10" fill="#9A7B2E" font-style="italic">khe rộng — ở lại lâu</text>
+            <circle cx="58" cy="58" r="13" fill="#3A5A78"/>
+            <text x="58" y="62" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">TIK</text>
+            <text x="58" y="86" text-anchor="middle" font-size="8.5" fill="#5A554C">bóng nảy</text>
+            <circle cx="262" cy="58" r="13" fill="#C44827"/>
+            <text x="262" y="62" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">TOK</text>
+            <text x="262" y="86" text-anchor="middle" font-size="8.5" fill="#5A554C">mình đánh</text>
+            <line x1="12" y1="116" x2="308" y2="116" stroke="#EDE7D6" stroke-width="1" stroke-dasharray="3 3"/>
+            <text x="12" y="140" font-size="9" font-weight="600" fill="#5A554C">TRÊN LƯỚI · BẾP — bóng không nảy</text>
+            <line x1="40" y1="176" x2="150" y2="176" stroke="#E0DAC9" stroke-width="2"/>
+            <rect x="74" y="164" width="40" height="24" rx="6" fill="#F2E5C0"/>
+            <text x="94" y="180" text-anchor="middle" font-size="9" fill="#9A7B2E" font-style="italic">mỏng</text>
+            <circle cx="58" cy="176" r="13" fill="#3A5A78"/>
+            <text x="58" y="180" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">TIK</text>
+            <text x="58" y="204" text-anchor="middle" font-size="8.5" fill="#5A554C">vợt đối thủ</text>
+            <circle cx="130" cy="176" r="13" fill="#C44827"/>
+            <text x="130" y="180" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">TOK</text>
+            <text x="130" y="204" text-anchor="middle" font-size="8.5" fill="#5A554C">mình nhả</text>
+          </svg>
         </div>
-        <div class="hb-count">
-          <div class="hb-count-mode">Bóng không nảy (trên lưới, nhanh)</div>
-          <div class="hb-count-step hb-count-hit"><span class="hb-count-num">3</span><span class="hb-count-txt"><strong>VUNG VỢT</strong> — một tiếng duy nhất</span></div>
-        </div>
-        <div class="hb-train-p">Chỉ đếm nhịp <em>của mình</em> → gọn hơn, và số nhịp tự co theo tốc độ: bóng chậm 2 nhịp, bóng nhanh 1 nhịp. Khoảng lặng sống trong khe <strong>2 → 3</strong>. Kèm: <strong>backswing ngắn lại</strong> để phanh tay kịp.</div>
+        <div class="hb-train-p">Trên lưới đọc <strong>NGUỒN</strong> (vợt đối thủ), không đợi <strong>KẾT QUẢ</strong> — tiếng họ chạm bóng chính là TIK của mình. Dấu chấm = bóng đang cho bao nhiêu khe, <strong>nhận hết</strong>; chỉ hai mức theo vùng sân, để bóng tự chọn — đừng ép rộng, đừng bóp hẹp. Và <strong>60% lực + điểm chạm sạch</strong> hơn 100% lực + điểm chạm lệch.</div>
       </div>
 
       <div class="hb-freedom">
@@ -3740,10 +3780,109 @@ body::before {
       <div class="hb-note"><strong>Bẫy:</strong> nửa nhịp là <em>kết quả</em> của đến sớm, không phải thứ ép ra. Trễ bóng mà cố dừng → chết. Rèn chân trước, khoảng lặng theo sau. Ở trận chiến tay nhanh tại bếp, nửa nhịp co lại còn "tay tĩnh" — nó rõ nhất ở groundstroke, drive, reset nơi bạn có thời gian.</div>
     </div>
 
-    <div class="section-title"><span class="num">04</span> Chiến thuật</div>
-    <div id="tacticsList"></div>
 
-    <div class="section-title"><span class="num">05</span> Lối chơi của M Flow</div>
+    <div class="section-title"><span class="num">04</span> Cú hai pha — Đẩy → Vẩy</div>
+    <div class="theory-card">
+      <div class="dim-zone">
+        <div class="dim-zone-head">Một cú gạt nước = hai pha cơ học trong một chớp mắt</div>
+        <div class="dim-item dim-p1">
+          <div class="dim-badge">1</div>
+          <div class="dim-body"><div class="dim-name">Đẩy tịnh tiến — định hướng</div><div class="dim-desc">Cẳng tay + cùi chỏ đẩy thẳng từ sau ra trước. Bệ phóng giữ đường bóng thẳng, ổn định — triệt tiêu bóng bay ra biên (lỗi cũ).</div></div>
+        </div>
+        <div class="dim-item dim-p2">
+          <div class="dim-badge">2</div>
+          <div class="dim-body"><div class="dim-name">Vẩy gạt nước — gia tốc &amp; bẻ góc</div><div class="dim-desc">Ngay mili-giây chạm bóng: vẩy cẳng tay/cổ tay → ngòi nổ tạo xoáy, lực nhấn, và nghiêng mặt vợt bẻ góc vào phút chót.</div></div>
+        </div>
+        <div class="dim-note"><strong>Quy tắc vàng:</strong> Đẩy <strong>trước</strong> → Vẩy <strong>sau</strong>. Vẩy sớm khi chưa có bệ hướng → mặt vợt méo, hụt bóng.</div>
+      </div>
+
+      <div class="theory-figure">
+        <div class="theory-figure-title">Đẩy định hướng → Vẩy bẻ góc</div>
+        <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Arial, sans-serif">
+          <defs>
+            <marker id="ph-b" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#3A5A78"/></marker>
+            <marker id="ph-r" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C44827"/></marker>
+          </defs>
+          <text x="86" y="70" text-anchor="middle" font-size="9" font-weight="700" fill="#3A5A78">1 · ĐẨY THẲNG</text>
+          <line x1="22" y1="88" x2="162" y2="88" stroke="#3A5A78" stroke-width="4" marker-end="url(#ph-b)"/>
+          <text x="86" y="110" text-anchor="middle" font-size="8" fill="#8A847A">định hướng · ổn định</text>
+          <circle cx="178" cy="88" r="8" fill="#C49A3B" stroke="#fff" stroke-width="2"/>
+          <path d="M 170 100 Q 190 98 196 64" fill="none" stroke="#C44827" stroke-width="3" marker-end="url(#ph-r)"/>
+          <line x1="186" y1="88" x2="300" y2="88" stroke="#CDC6B6" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="300" y="100" text-anchor="end" font-size="7.5" fill="#A8A296" font-style="italic">tưởng: thẳng</text>
+          <line x1="186" y1="84" x2="288" y2="46" stroke="#C44827" stroke-width="2.5" marker-end="url(#ph-r)"/>
+          <text x="232" y="40" font-size="9" font-weight="700" fill="#C44827">2 · VẨY</text>
+          <text x="252" y="52" text-anchor="middle" font-size="8" fill="#8A847A">bẻ góc phút chót</text>
+        </svg>
+      </div>
+
+      <div class="theory-note">Đánh đổi thật: Pha 1 ổn định <em>vì</em> biên độ nhỏ; Pha 2 gắt <em>cần</em> gia tốc cổ tay ở biên độ nhỏ — chỗ khó nhất. Vẩy càng mạnh, biên an toàn càng hẹp. Ưu tiên <strong>điểm chạm sạch (60%)</strong>, đừng tham 100% cả ổn định lẫn sát thương.</div>
+    </div>
+
+    <div class="pull-quote">Ban đầu chỉ là một quả bóng. Sau đó là State, Intent, Capability, Freedom. Cuối cùng — lại chỉ là một quả bóng.</div>
+  </div>
+
+  <!-- VIEW: JOURNAL -->
+  <div class="view" id="view-journal">
+    <div class="section-title"><span class="num">01</span> Nhật ký hôm nay</div>
+    <div class="card">
+      <div class="journal-date-row">
+        <label class="journal-date-label">Ngày:</label>
+        <input type="date" id="journalDatePicker" class="journal-date-picker" onchange="changeJournalDate(this.value)">
+      </div>
+      <div class="journal-date" id="journalDate">--</div>
+      <div id="journalTodayTicks"></div>
+      <div class="journal-input-label">Nhận xét</div>
+      <textarea class="journal-input" id="journalInput" placeholder="Hôm nay..."></textarea>
+      <button class="btn btn-sm" style="margin-top:10px;" onclick="saveJournal()">Lưu nhật ký</button>
+    </div>
+
+    <div class="section-title"><span class="num">02</span> Các ngày đã ghi</div>
+    <div id="journalList"></div>
+
+    <div class="journal-hint">Mỗi ngày một dòng chữ. Sau 26 tuần, đây là tấm bản đồ thật của hành trình — không phải điểm số, mà là những gì bạn đã sống qua.</div>
+  </div>
+
+<!-- Tab Bar -->
+
+  <div class="view" id="view-tactics">
+
+    <div class="section-title"><span class="num">01</span> Sở trường — Vũ khí tối thượng</div>
+    <div class="playstyle-card">
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">1</span> Drive bóng thấp siêu xoáy</div>
+        <div class="ps-p">Nền tennis + grip số sâu (3 / 3.5) → mặt vợt tự chúc xuống, tạo <strong>topspin cuộn khổng lồ</strong>, ép bóng cắm thẳng xuống sân từ những góc cực thấp.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">2</span> Trái hai tay chuẩn mực</div>
+        <div class="ps-p">Tay trái là bệ phóng thứ hai → xóa hẳn góc chết trái tay của grip sâu, tạo <span class="ps-attack">backhand roll volley</span> tăng tốc trên lưới đầy uy lực.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">3</span> Cần gạt nước — một vòng xoay</div>
+        <div class="ps-p">Cả trò chơi lưới rút về <strong>một biến: góc xoay.</strong> Vợt xoay quanh cổ tay/cẳng tay như kim đồng hồ — đầu lên → ngang phải → đầu chúc xuống → ngang trái đều là điểm trên <strong>cùng một vòng</strong>. Không "chuyển tư thế" (chuyển = tốn nhịp), chỉ xoay tới góc cần → công–thủ, trái–phải đổi gần như miễn phí.</div>
+        <div class="ps-list">
+          <div class="ps-li"><strong>Miết topspin = công</strong> — cam kết <em>một mặt</em>, quệt dưới-lên (topspin phải đúng mặt đang quệt): speed-up được cả hai bên, bóng cuốn cắm xuống nên đánh lên mạnh vẫn vào sân.</div>
+          <div class="ps-li"><strong>Chạm mềm = thủ</strong> — block / reset / dink chỉ cần nghiêng góc mặt, nên <em>luân phiên cả hai mặt</em> đều được.</div>
+        </div>
+        <div class="ps-p"><strong>Push-Flick</strong> (cú công của vòng): đẩy định hướng → vẩy bẻ góc phút chót, giấu hướng. <strong>Vay lực</strong> — bóng nhanh: đẩy nhẹ + vẩy nhẹ mượn pace. <strong>Tạo lực</strong> — bóng chết: đẩy dứt khoát + vẩy mạnh từ dưới lên.</div>
+        <div class="theory-note"><strong>Điều kiện:</strong> vòng xoay lo <strong>góc</strong>, không lo <strong>vị trí</strong> — bóng rộng/xa/thấp phải <em>dời chân</em> đặt lại tâm vòng. Cú jam phẳng-rát thẳng ngực: bỏ xoay, <em>block cứng có cấu trúc</em>. Biên độ bé → lệch vài độ là ra biên: chọn dứt khoát, đừng lừng khừng.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">4</span> Tư duy săn mồi</div>
+        <div class="ps-p">Chủ động tăng tốc, áp đảo tấn công thay vì sa đà vào dink bền — hợp xu hướng pickleball đỉnh cao.</div>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="num">02</span> Sở đoản — Điểm mù kỹ thuật</div>
+    <div class="playstyle-card">
+      <div class="ps-weak">
+        <div class="ps-weak-h">Hai lỗ hổng cần canh</div>
+        <div class="ps-weak-item"><strong>1. "Nóng máy lỗi" đầu trận</strong> — vào trận dễ luống cuống, kích hoạt bộ nhớ tennis → vung quá mạnh, mở vợt quá to, bóng bay ra biên.</div>
+        <div class="ps-weak-item"><strong>2. Lười hạ trọng tâm khi cuống</strong> — bị áp lực thì chân "hóa đá", đánh bóng khi đã bay ngang/ra sau người → mặt vợt ngửa, bóng bay ra ngoài.</div>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="num">03</span> Lối chơi chi tiết</div>
     <div class="playstyle-card">
       <div class="playstyle-tags">
         <span class="ps-tag">Grip 3-4 sâu (Eastern)</span>
@@ -3751,6 +3890,52 @@ body::before {
         <span class="ps-tag">Forehand topspin nặng</span>
       </div>
       <div class="playstyle-intro">Ba đặc điểm này không rời rạc — chúng gộp thành <strong>một lối chơi</strong>. Bạn không phải mẫu "chạm mềm" thuần. Bạn là <strong>tay topspin có lực</strong>, hai cánh đều bạt được spin, tay nhanh nhờ không đổi grip. Một trục đồng bộ: <strong>cánh trái là lá chắn phản công, cánh phải là mũi khoan cày xoáy</strong>. Lối thắng của bạn là kéo trận đấu về vùng spin &amp; tốc độ, ép đối thủ lộ sơ hở — không phải chịu đựng dink dai.</div>
+
+      <div class="ps-grip-fig">
+        <div class="theory-figure-title">Cầm vợt số 3 (Eastern) — chữ V trên cạnh 3</div>
+        <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Arial, sans-serif">
+          <!-- LEFT: octagon cross-section (nhìn từ chuôi) -->
+          <text x="85" y="24" text-anchor="middle" font-size="9" font-weight="600" fill="#5A554C">NHÌN TỪ CHUÔI VỢT</text>
+          <polygon points="101.8,71.3 125.7,95.2 125.7,128.8 101.8,152.7 68.2,152.7 44.3,128.8 44.3,95.2 68.2,71.3" fill="#FAF7F0" stroke="#B9A176" stroke-width="1.5"/>
+          <!-- highlight bevel 3 (right edge) -->
+          <line x1="125.7" y1="95.2" x2="125.7" y2="128.8" stroke="#C49A3B" stroke-width="5" stroke-linecap="round"/>
+          <!-- V wedge sitting on bevel 3 -->
+          <path d="M 140 100 L 126 112 L 140 124 Z" fill="#C44827"/>
+          <text x="146" y="116" font-size="11" font-weight="700" fill="#C44827">V</text>
+          <!-- bevel numbers -->
+          <circle cx="85" cy="60" r="8.5" fill="#EDE7D6"/><text x="85" y="63.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">1</text>
+          <circle cx="118" cy="73" r="8.5" fill="#EDE7D6"/><text x="118" y="76.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">2</text>
+          <circle cx="150" cy="112" r="9.5" fill="#C49A3B"/><text x="150" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3</text>
+          <circle cx="118" cy="151" r="8.5" fill="#EDE7D6"/><text x="118" y="154.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">4</text>
+          <circle cx="85" cy="164" r="8.5" fill="#EDE7D6"/><text x="85" y="167.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">5</text>
+          <circle cx="52" cy="151" r="8.5" fill="#EDE7D6"/><text x="52" y="154.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">6</text>
+          <circle cx="30" cy="112" r="8.5" fill="#EDE7D6"/><text x="30" y="115.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">7</text>
+          <circle cx="52" cy="73" r="8.5" fill="#EDE7D6"/><text x="52" y="76.5" text-anchor="middle" font-size="10" font-weight="600" fill="#8A847A">8</text>
+          <text x="85" y="188" text-anchor="middle" font-size="8.5" fill="#8A847A" font-style="italic">cạnh 3 = bên phải chuôi (thuận tay phải)</text>
+
+          <!-- divider -->
+          <line x1="170" y1="40" x2="170" y2="196" stroke="#EDE7D6" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <!-- RIGHT: schematic hand gripping handle -->
+          <text x="248" y="24" text-anchor="middle" font-size="9" font-weight="600" fill="#5A554C">TAY CẦM</text>
+          <!-- handle -->
+          <rect x="238" y="58" width="22" height="132" rx="9" fill="#D9C7A8" stroke="#A8916E" stroke-width="1.5"/>
+          <!-- back of hand / palm mass -->
+          <rect x="276" y="84" width="24" height="92" rx="12" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.5"/>
+          <!-- 4 fingers wrapping over handle -->
+          <rect x="234" y="96"  width="56" height="13" rx="6.5" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.3"/>
+          <rect x="232" y="116" width="58" height="13" rx="6.5" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.3"/>
+          <rect x="234" y="136" width="56" height="13" rx="6.5" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.3"/>
+          <rect x="236" y="156" width="54" height="13" rx="6.5" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.3"/>
+          <!-- thumb crossing over the top toward bevel 3 -->
+          <path d="M 296 96 Q 280 70 250 78 Q 240 81 244 90 Q 266 80 290 108 Z" fill="#E8D9BE" stroke="#B9A176" stroke-width="1.3"/>
+          <!-- V web mark where thumb meets index, landing on handle near bevel 3 -->
+          <path d="M 262 74 L 250 86 L 262 92" fill="none" stroke="#C44827" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="266" y="72" font-size="11" font-weight="700" fill="#C44827">V</text>
+          <text x="248" y="206" text-anchor="middle" font-size="8.5" fill="#8A847A" font-style="italic">"bắt tay" với vợt</text>
+        </svg>
+        <div class="ps-grip-cap">Chữ <strong>V</strong> (khe ngón cái–ngón trỏ) đặt trên <strong>cạnh số 3</strong> — cố định cho mọi cú, không đổi grip. Đây là cái cho bạn tay nhanh ở bếp.</div>
+      </div>
 
       <div class="ps-ready">
         <div class="ps-ready-h">Thế đứng sẵn sàng — Lá chắn 70/30</div>
@@ -3824,43 +4009,63 @@ body::before {
       </div>
     </div>
 
-    <div class="pull-quote">Ban đầu chỉ là một quả bóng. Sau đó là State, Intent, Capability, Freedom. Cuối cùng — lại chỉ là một quả bóng.</div>
-  </div>
-
-  <!-- VIEW: JOURNAL -->
-  <div class="view" id="view-journal">
-    <div class="section-title"><span class="num">01</span> Nhật ký hôm nay</div>
-    <div class="card">
-      <div class="journal-date-row">
-        <label class="journal-date-label">Ngày:</label>
-        <input type="date" id="journalDatePicker" class="journal-date-picker" onchange="changeJournalDate(this.value)">
+    <div class="section-title"><span class="num">04</span> Trước trận — Khởi động 3 bước</div>
+    <div class="playstyle-card">
+      <div class="ps-p">"Đánh thức cảm giác Pickleball" — 6 phút trước khi vào sân.</div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">1</span> 2 phút Dink</div>
+        <div class="ps-p">Đứng vạch bếp, thả lỏng cổ tay, tìm lại cảm giác chạm bóng êm (soft hands).</div>
       </div>
-      <div class="journal-date" id="journalDate">--</div>
-      <div id="journalTodayTicks"></div>
-      <div class="journal-input-label">Nhận xét</div>
-      <textarea class="journal-input" id="journalInput" placeholder="Hôm nay..."></textarea>
-      <button class="btn btn-sm" style="margin-top:10px;" onclick="saveJournal()">Lưu nhật ký</button>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">2</span> 2 phút Fast Hands</div>
+        <div class="ps-p">Tập phản xạ "cần gạt nước" trên lưới để quen tốc độ bóng rát mà <strong>không cần mở vợt</strong>.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">3</span> 2 phút Drive / Drop</div>
+        <div class="ps-p">Lùi cuối sân tập drive thấp — <strong>nhìn thấy bóng cuộn cắm xuống sân</strong> mới đạt.</div>
+      </div>
     </div>
 
-    <div class="section-title"><span class="num">02</span> Các ngày đã ghi</div>
-    <div id="journalList"></div>
+    <div class="section-title"><span class="num">05</span> Trong trận — 4 thần chú kìm cương</div>
+    <div class="playstyle-card">
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">1</span> Mở vợt một nửa (Half Takeback)</div>
+        <div class="ps-p">Thu nhỏ biên độ — chỉ ngang hông hoặc sát sườn, không lấy đà sâu ra sau. Lực đến từ <strong>tốc độ vẩy cẳng tay</strong>, hướng vung từ dưới lên.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">2</span> Nắm tay 4/10</div>
+        <div class="ps-p">Giữ cán lỏng 4/10 để cổ tay linh hoạt miết topspin. Chỉ <strong>siết nhẹ đúng khoảnh khắc chạm bóng</strong>. Tuyệt đối không gồng cứng.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">3</span> Tấn công vào "Vùng an toàn"</div>
+        <div class="ps-p">5 điểm đầu: drive / speed-up thẳng vào <span class="ps-attack">giữa sân hoặc giữa người</span> đối thủ (lưới thấp nhất, sân dài nhất). Tay "ngoan" rồi mới siết góc ra biên.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-h"><span class="ps-num">4</span> Đón bóng phía trước (Out Front)</div>
+        <div class="ps-p">Tiếp xúc bóng ở trước mặt ~một cánh tay → tạo không gian cho mặt vợt số sâu chúc xuống cuộn bóng, ngăn bóng bay ra ngoài.</div>
+      </div>
+    </div>
 
-    <div class="journal-hint">Mỗi ngày một dòng chữ. Sau 26 tuần, đây là tấm bản đồ thật của hành trình — không phải điểm số, mà là những gì bạn đã sống qua.</div>
+    <div class="section-title"><span class="num">06</span> Khung chiến thuật 4D</div>
+    <div id="tacticsList"></div>
+
   </div>
-
-<!-- Tab Bar -->
 <nav class="tabbar">
-  <button class="tab active" data-view="today">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12L12 4l9 8M5 10v10h14V10"/></svg>
-    <span>Hôm nay</span>
+  <button class="tab" data-view="philosophy">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 9 9M12 3v9l6.5 6.5M12 3a9 9 0 0 1 9 9h-9"/></svg>
+    <span>Triết lý</span>
+  </button>
+  <button class="tab" data-view="tactics">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+    <span>Chiến thuật</span>
   </button>
   <button class="tab" data-view="rubric">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
     <span>Chấm điểm</span>
   </button>
-  <button class="tab" data-view="philosophy">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 9 9M12 3v9l6.5 6.5M12 3a9 9 0 0 1 9 9h-9"/></svg>
-    <span>Triết lý</span>
+  <button class="tab active" data-view="today">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12L12 4l9 8M5 10v10h14V10"/></svg>
+    <span>Hôm nay</span>
   </button>
   <button class="tab" data-view="journal">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h13l3 3v13H4zM8 4v16M12 10h5M12 14h5"/></svg>
@@ -3933,124 +4138,10 @@ function getChecklistForToday() {
 // ============================================================
 const POSITIONS = [{"id": "kitchen", "name": "Bếp", "en": "Kitchen", "desc": "Sát lưới, vùng NVZ"}, {"id": "transition", "name": "Chuyển tiếp", "en": "Transition", "desc": "No-man's land, đang tiến lên"}, {"id": "baseline", "name": "Baseline", "en": "Baseline", "desc": "Cuối sân, serve/return"}];
 const HEIGHTS = [{"id": "low", "name": "Thấp", "desc": "Dưới gối", "icon": "↓"}, {"id": "mid", "name": "Vừa", "desc": "Ngang hông đến eo", "icon": "→"}, {"id": "high", "name": "Cao", "desc": "Ngang vai", "icon": "↗"}, {"id": "veryhigh", "name": "Rất cao", "desc": "Trên đầu", "icon": "↑"}];
-const CELL_INFO = {"baseline_low": {"short": "Drop / Reset", "shots": ["Drop / Reset", "Drive", "Lob"], "note": "Từ cuối sân, bóng thấp. Drop/Reset: arc mềm rơi vào bếp đối thủ rồi tiến lên. Drive: topspin mạnh ép đối thủ. Lob: đổi nhịp."}, "baseline_mid": {"short": "Drive", "shots": ["Drive", "Groundstroke", "Drop"], "note": "Backhand mạnh phát huy ở đây. Drive sâu topspin ép đối thủ, hoặc drop để lên lưới an toàn."}, "baseline_high": {"short": "Drive+", "shots": ["Drive mạnh", "Approach", "Swing volley"], "note": "Bóng cao ở cuối sân — drive winner hoặc approach shot để tiến lên chiếm bếp."}, "baseline_veryhigh": {"short": "Smash", "shots": ["Smash", "Overhead"], "note": "Lob hụt → smash dứt điểm. Hiếm nhưng phải gọn."}, "transition_low": {"short": "Reset", "shots": ["Reset", "Drop"], "note": "Tình huống khó nhất. Soft hand hấp thụ lực, đưa bóng vào bếp đối thủ. Rồi tiến lên."}, "transition_mid": {"short": "Block", "shots": ["Block", "Drive", "Reset"], "note": "Bóng nhanh → block. Có thời gian → drive sâu rồi tiến. Khó → reset về bếp."}, "transition_high": {"short": "Volley", "shots": ["Volley tấn công", "Punch", "Drive"], "note": "Punch volley sâu ép đối thủ lùi, tận dụng để chiếm bếp."}, "transition_veryhigh": {"short": "Overhead", "shots": ["Overhead", "Smash"], "note": "Smash nếu đủ cao, hoặc volley sâu. Giữ thăng bằng, đừng vội."}, "kitchen_low": {"short": "Dink", "shots": ["Dink", "Reset", "Roll"], "note": "Nâng nhẹ, mặt vợt mở, lực tối thiểu. Giữ bóng thấp qua lưới."}, "kitchen_mid": {"short": "Roll", "shots": ["Roll", "Drive nhẹ", "Dink"], "note": "Topspin nhẹ, kiểm soát. Cẩn thận pop-up."}, "kitchen_high": {"short": "Flick", "shots": ["Flick", "Punch volley", "Speed-up"], "note": "Đột ngột tăng tốc, nhắm chân đối thủ hoặc khe giữa."}, "kitchen_veryhigh": {"short": "Smash", "shots": ["Smash", "Put-away"], "note": "Bóng nổi cao = cơ hội dứt điểm. Đập xuống, nhắm khoảng trống."}};
+const CELL_INFO = {"baseline_low": {"short": "Drop / Reset", "shots": ["Drop / Reset", "Drive", "Lob"], "note": "Từ cuối sân, bóng thấp. Drop/Reset: arc mềm rơi vào bếp đối thủ rồi tiến lên. Drive: topspin mạnh ép đối thủ. Lob: đổi nhịp."}, "baseline_mid": {"short": "Drive", "shots": ["Drive", "Groundstroke", "Drop"], "note": "Backhand mạnh phát huy ở đây. Drive sâu topspin ép đối thủ, hoặc drop để lên lưới an toàn."}, "baseline_high": {"short": "Drive+", "shots": ["Drive mạnh", "Approach", "Swing volley"], "note": "Bóng cao ở cuối sân — drive winner hoặc approach shot để tiến lên chiếm bếp."}, "baseline_veryhigh": {"short": "Smash", "shots": ["Smash", "Overhead"], "note": "Hai loại bóng vào ô này. Lob trong sân → smash/reset dứt điểm — CHẤM Công/Thủ ở đây. Drive bay cao → đọc in/out: ra ngoài thì BỎ, đó là Vision (mắt), không phải cú đánh nên không chấm. Biết lob hay drive từ cú vung đối thủ, đừng đợi đo bóng trên không."}, "transition_low": {"short": "Reset", "shots": ["Reset", "Drop"], "note": "Tình huống khó nhất. Soft hand hấp thụ lực, đưa bóng vào bếp đối thủ. Rồi tiến lên."}, "transition_mid": {"short": "Block", "shots": ["Block", "Drive", "Reset"], "note": "Bóng nhanh → block. Có thời gian → drive sâu rồi tiến. Khó → reset về bếp."}, "transition_high": {"short": "Volley", "shots": ["Volley tấn công", "Punch", "Drive"], "note": "Punch volley sâu ép đối thủ lùi, tận dụng để chiếm bếp."}, "transition_veryhigh": {"short": "Overhead", "shots": ["Overhead", "Smash"], "note": "Smash nếu đủ cao, hoặc volley sâu. Giữ thăng bằng, đừng vội."}, "kitchen_low": {"short": "Dink", "shots": ["Dink", "Reset", "Roll"], "note": "Nâng nhẹ, mặt vợt mở, lực tối thiểu. Giữ bóng thấp qua lưới."}, "kitchen_mid": {"short": "Roll", "shots": ["Roll", "Drive nhẹ", "Dink"], "note": "Topspin nhẹ, kiểm soát. Cẩn thận pop-up."}, "kitchen_high": {"short": "Flick", "shots": ["Flick", "Punch volley", "Speed-up"], "note": "Đột ngột tăng tốc, nhắm chân đối thủ hoặc khe giữa."}, "kitchen_veryhigh": {"short": "Smash", "shots": ["Smash", "Put-away"], "note": "Bóng nổi cao = cơ hội dứt điểm. Đập xuống, nhắm khoảng trống."}};
 const CELL_SVG = {"baseline_low": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 400\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"400\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">THIRD SHOT: DROP vs DRIVE (so sánh quỹ đạo)</text>\n  \n  <!-- Side view of court -->\n  <g transform=\"translate(60, 80)\">\n    <!-- Ground -->\n    <line x1=\"0\" y1=\"250\" x2=\"580\" y2=\"250\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <!-- Net (center) -->\n    <line x1=\"290\" y1=\"100\" x2=\"290\" y2=\"250\" stroke=\"#666\" stroke-width=\"3\"/>\n    <text x=\"290\" y=\"92\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">LƯỚI (91cm)</text>\n    \n    <!-- Kitchen zones -->\n    <rect x=\"205\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <rect x=\"290\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <text x=\"247\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen mình</text>\n    <text x=\"332\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen đối phương</text>\n    \n    <!-- Baseline labels -->\n    <line x1=\"0\" y1=\"245\" x2=\"0\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"0\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline mình</text>\n    <text x=\"30\" y=\"270\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">●</text>\n    <text x=\"30\" y=\"298\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Vị trí đánh</text>\n    \n    <line x1=\"580\" y1=\"245\" x2=\"580\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"580\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline đối phương</text>\n    \n    <!-- DROP arc (cao, mềm) - green -->\n    <path d=\"M 30 250 Q 200 30, 330 250\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\" stroke-dasharray=\"0\"/>\n    <text x=\"200\" y=\"35\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#2E7D32\">DROP — Arc cao, mềm</text>\n    <text x=\"200\" y=\"50\" text-anchor=\"middle\" font-size=\"10\" fill=\"#2E7D32\">Bóng rơi trong kitchen đối phương</text>\n    \n    <!-- Drop landing point -->\n    <circle cx=\"330\" cy=\"250\" r=\"6\" fill=\"#2E7D32\" stroke=\"#fff\" stroke-width=\"2\"/>\n    \n    <!-- DRIVE arc (thấp, nhanh) - red -->\n    <path d=\"M 30 250 Q 290 120, 540 230\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"3\"/>\n    <text x=\"430\" y=\"140\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#C62828\">DRIVE — Đường thấp, nhanh</text>\n    <text x=\"430\" y=\"155\" text-anchor=\"middle\" font-size=\"10\" fill=\"#C62828\">Bóng đi sâu, ép đối phương</text>\n    \n    <!-- Drive landing point -->\n    <circle cx=\"540\" cy=\"230\" r=\"6\" fill=\"#C62828\" stroke=\"#fff\" stroke-width=\"2\"/>\n  </g>\n  \n  <!-- Decision rules box -->\n  <rect x=\"60\" y=\"345\" width=\"580\" height=\"50\" fill=\"#F5F5F5\" stroke=\"#999\" stroke-width=\"1\"/>\n  <text x=\"70\" y=\"365\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Quy tắc đọc bóng:</text>\n  <text x=\"70\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng cao + return thấp → DRIVE (khai thác backhand mạnh của M Flow)</text>\n  <text x=\"380\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng thấp + return cao → DROP (chậm rãi, chiếm kitchen)</text>\n</svg>"};
 const CONTACT_CRITERIA = ["Điểm ngọt — bóng vào đúng điểm ngọt của mặt vợt", "Góc mặt vợt — góc tiếp xúc tạo đúng quỹ đạo mong muốn", "Lực vừa đủ — truyền toàn lực, không tán, không quá/thiếu"];
 const TACTICS = {"attack": {"title": "Tấn công (4D)", "icon": "⚔️", "principle": "Tạo lợi thế qua 3 vector: không gian · vị trí · thời gian", "items": [{"name": "1. Kéo dãn đội hình", "desc": "Đánh rộng, buộc đối thủ tách ra, tạo khoảng trống giữa. (Không gian)"}, {"name": "2. Đánh chỗ hiểm", "desc": "Nhắm chân, body, khe giữa — chỗ không thể phòng hoặc phải rất khéo mới đỡ. (Vị trí)"}, {"name": "3. Tăng tốc", "desc": "Nhanh đến mức đối thủ không kịp phản ứng. Chọn đúng thời điểm speed-up. (Thời gian)"}]}, "defense": {"title": "Phòng thủ (4D)", "icon": "🛡️", "principle": "Lấy thăng bằng → giữ → lật thế cờ", "items": [{"name": "1. Lấy lại thăng bằng", "desc": "Lên bếp về vị trí trung tính, thoát thế bị động. Reset bóng an toàn."}, {"name": "2. Duy trì cân bằng", "desc": "Dink kiên nhẫn nhưng không quá lâu — giữ thế cân bằng, chờ đúng cơ hội."}, {"name": "3. Lật thế cờ", "desc": "Dùng khả năng Điểm Chạm đẩy đối thủ vào thế bất lợi, chuyển sang tấn công."}]}, "transcend": {"title": "Out of Map", "icon": "🔭", "principle": "Không chơi trong bản đồ — thao túng nó", "items": [{"name": "Giữ quyền chọn", "desc": "Ở ô đối thủ tưởng bạn hết lựa chọn (bóng thấp, rộng, khó), bạn vẫn chọn Công. Không công nhận tính tất yếu của tình huống — như mọi nhà vô địch."}, {"name": "Thao túng nhịp", "desc": "Buộc đối thủ chơi ở tốc độ và độ cao họ ghét. Kéo họ vào sân của bạn cho đến khi họ chơi theo luật của bạn mà không nhận ra."}, {"name": "Dòng sông ý đồ", "desc": "Mỗi cú không chỉ giải quyết hiện tại — nó dọn đường cho cú 2-3 nhịp sau. Đối thủ thấy winner bất ngờ; thật ra là nước đầu của một bẫy nhiều nước."}]}};
-const COURT_SVG = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 480\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"480\" fill=\"#FAFAFA\"/>\n  \n  <!-- Court dimensions: 6.10m x 13.41m, scale ~40px/m -->\n  <!-- Total court: 244 x 537, but rotated for landscape: 537w x 244h -->\n  <!-- Center at 350, 240. Court 540x244 -->\n  \n  <g transform=\"translate(80, 118)\">\n    <!-- Full court outline -->\n    <rect x=\"0\" y=\"0\" width=\"540\" height=\"244\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"3\"/>\n    \n    <!-- Net (center vertical) -->\n    <line x1=\"270\" y1=\"-15\" x2=\"270\" y2=\"259\" stroke=\"#000\" stroke-width=\"4\"/>\n    <text x=\"270\" y=\"-22\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\">LƯỚI</text>\n    \n    <!-- Kitchen (NVZ) - 2.13m = ~85px from net -->\n    <rect x=\"185\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <rect x=\"270\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"227\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"227\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    <text x=\"313\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"313\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    \n    <!-- Transition zone -->\n    <rect x=\"80\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <rect x=\"355\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <text x=\"132\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"132\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    <text x=\"408\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"408\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    \n    <!-- Baseline area -->\n    <text x=\"40\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"40\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    <text x=\"500\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"500\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    \n    <!-- Center service line -->\n    <line x1=\"80\" y1=\"122\" x2=\"185\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    <line x1=\"355\" y1=\"122\" x2=\"460\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    \n    <!-- Kitchen line markers -->\n    <line x1=\"185\" y1=\"0\" x2=\"185\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <line x1=\"355\" y1=\"0\" x2=\"355\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"185\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    <text x=\"355\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    \n    <!-- Dimensions -->\n    <text x=\"270\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\">13.41m (44ft)</text>\n    <line x1=\"0\" y1=\"265\" x2=\"540\" y2=\"265\" stroke=\"#888\" stroke-width=\"0.5\"/>\n    <line x1=\"0\" y1=\"262\" x2=\"0\" y2=\"268\" stroke=\"#888\"/>\n    <line x1=\"540\" y1=\"262\" x2=\"540\" y2=\"268\" stroke=\"#888\"/>\n    \n    <text x=\"-15\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\" transform=\"rotate(-90, -15, 125)\">6.10m (20ft)</text>\n  </g>\n  \n  <!-- Title -->\n  <text x=\"350\" y=\"35\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">SÂN PICKLEBALL — 3 VÙNG CHÍNH</text>\n  <text x=\"350\" y=\"55\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Kích thước thật: 6.10m × 13.41m</text>\n  \n  <!-- Legend -->\n  <g transform=\"translate(80, 410)\">\n    <rect x=\"0\" y=\"0\" width=\"20\" height=\"14\" fill=\"#FFF3B0\" stroke=\"#666\"/>\n    <text x=\"28\" y=\"12\" font-size=\"11\">Kitchen (NVZ) — không volley</text>\n    \n    <rect x=\"220\" y=\"0\" width=\"20\" height=\"14\" fill=\"#C8E0F0\"/>\n    <text x=\"248\" y=\"12\" font-size=\"11\">Transition Zone — đi qua nhanh</text>\n    \n    <rect x=\"460\" y=\"0\" width=\"20\" height=\"14\" fill=\"#E8F0E8\" stroke=\"#666\"/>\n    <text x=\"488\" y=\"12\" font-size=\"11\">Baseline area — serve/return</text>\n  </g>\n</svg>";
-
-const SKILL_SVGS = {"p1_grip": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 400\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"400\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">DUAL GRIP — CONTINENTAL vs EASTERN/SW</text>\n  \n  <!-- Continental grip (left) -->\n  <g transform=\"translate(50, 70)\">\n    <text x=\"150\" y=\"20\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#2E75B6\">CONTINENTAL (Vị trí 2)</text>\n    <text x=\"150\" y=\"40\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\">Cho soft game: dink, volley, reset, serve, drop</text>\n    \n    <!-- Handle (octagonal end view) - 8 sides -->\n    <g transform=\"translate(150, 130)\">\n      <polygon points=\"-40,-16 -16,-40 16,-40 40,-16 40,16 16,40 -16,40 -40,16\" fill=\"#8B7355\" stroke=\"#333\" stroke-width=\"2\"/>\n      <!-- Bevel numbers -->\n      <text x=\"0\" y=\"-46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">1</text>\n      <text x=\"33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">2</text>\n      <text x=\"46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">3</text>\n      <text x=\"33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">4</text>\n      <text x=\"0\" y=\"55\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">5</text>\n      <text x=\"-33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">6</text>\n      <text x=\"-46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">7</text>\n      <text x=\"-33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">8</text>\n      \n      <!-- V mark on bevel 2 -->\n      <text x=\"36\" y=\"-23\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#C00000\">V</text>\n    </g>\n    \n    <text x=\"150\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" fill=\"#333\">Ngón cái (V) đặt trên bevel 2</text>\n    <text x=\"150\" y=\"240\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\" font-style=\"italic\">\"Như cầm búa\"</text>\n    \n    <!-- Paddle position indicator -->\n    <text x=\"150\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\" font-weight=\"bold\">Mặt vợt:</text>\n    <line x1=\"100\" y1=\"290\" x2=\"200\" y2=\"290\" stroke=\"#1F3864\" stroke-width=\"3\"/>\n    <text x=\"150\" y=\"305\" text-anchor=\"middle\" font-size=\"10\" fill=\"#666\">Vuông góc mặt đất</text>\n  </g>\n  \n  <!-- Divider -->\n  <line x1=\"350\" y1=\"80\" x2=\"350\" y2=\"340\" stroke=\"#CCC\" stroke-width=\"2\" stroke-dasharray=\"5,5\"/>\n  \n  <!-- Eastern/SW grip (right) -->\n  <g transform=\"translate(400, 70)\">\n    <text x=\"150\" y=\"20\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"bold\" fill=\"#C00000\">EASTERN/SW (Vị trí 3-4)</text>\n    <text x=\"150\" y=\"40\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\">Cho drive: backhand drive, forehand drive</text>\n    \n    <g transform=\"translate(150, 130)\">\n      <polygon points=\"-40,-16 -16,-40 16,-40 40,-16 40,16 16,40 -16,40 -40,16\" fill=\"#8B7355\" stroke=\"#333\" stroke-width=\"2\"/>\n      <text x=\"0\" y=\"-46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">1</text>\n      <text x=\"33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">2</text>\n      <text x=\"46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">3</text>\n      <text x=\"33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#FFF\">4</text>\n      <text x=\"0\" y=\"55\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">5</text>\n      <text x=\"-33\" y=\"36\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">6</text>\n      <text x=\"-46\" y=\"3\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">7</text>\n      <text x=\"-33\" y=\"-30\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#333\">8</text>\n      \n      <!-- V mark spans bevel 3-4 -->\n      <text x=\"46\" y=\"20\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#C00000\">V</text>\n    </g>\n    \n    <text x=\"150\" y=\"220\" text-anchor=\"middle\" font-size=\"12\" fill=\"#333\">Ngón cái (V) đặt sâu bevel 3-4</text>\n    <text x=\"150\" y=\"240\" text-anchor=\"middle\" font-size=\"11\" fill=\"#666\" font-style=\"italic\">\"Như bắt tay vợt\"</text>\n    \n    <text x=\"150\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\" font-weight=\"bold\">Mặt vợt:</text>\n    <line x1=\"120\" y1=\"305\" x2=\"180\" y2=\"275\" stroke=\"#C00000\" stroke-width=\"3\"/>\n    <text x=\"150\" y=\"325\" text-anchor=\"middle\" font-size=\"10\" fill=\"#666\">Hơi nghiêng — topspin tự nhiên</text>\n  </g>\n  \n  <!-- Bottom note -->\n  <rect x=\"50\" y=\"355\" width=\"600\" height=\"35\" fill=\"#FFF4E6\" stroke=\"#E89A2C\" stroke-width=\"1\"/>\n  <text x=\"350\" y=\"375\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#8B6914\">SKILL QUAN TRỌNG: Switch grip nhanh, không cần nhìn — drill 5 phút/buổi</text>\n</svg>", "p1_kitchen": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 480\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"480\" fill=\"#FAFAFA\"/>\n  \n  <!-- Court dimensions: 6.10m x 13.41m, scale ~40px/m -->\n  <!-- Total court: 244 x 537, but rotated for landscape: 537w x 244h -->\n  <!-- Center at 350, 240. Court 540x244 -->\n  \n  <g transform=\"translate(80, 118)\">\n    <!-- Full court outline -->\n    <rect x=\"0\" y=\"0\" width=\"540\" height=\"244\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"3\"/>\n    \n    <!-- Net (center vertical) -->\n    <line x1=\"270\" y1=\"-15\" x2=\"270\" y2=\"259\" stroke=\"#000\" stroke-width=\"4\"/>\n    <text x=\"270\" y=\"-22\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\">LƯỚI</text>\n    \n    <!-- Kitchen (NVZ) - 2.13m = ~85px from net -->\n    <rect x=\"185\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <rect x=\"270\" y=\"0\" width=\"85\" height=\"244\" fill=\"#FFF3B0\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"227\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"227\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    <text x=\"313\" y=\"125\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\" fill=\"#8B6914\">KITCHEN</text>\n    <text x=\"313\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">(NVZ)</text>\n    \n    <!-- Transition zone -->\n    <rect x=\"80\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <rect x=\"355\" y=\"0\" width=\"105\" height=\"244\" fill=\"#C8E0F0\" stroke=\"none\"/>\n    <text x=\"132\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"132\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    <text x=\"408\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F5582\">TRANSITION</text>\n    <text x=\"408\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#1F5582\">(No-man's land)</text>\n    \n    <!-- Baseline area -->\n    <text x=\"40\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"40\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    <text x=\"500\" y=\"125\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#444\">BASELINE</text>\n    <text x=\"500\" y=\"142\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">AREA</text>\n    \n    <!-- Center service line -->\n    <line x1=\"80\" y1=\"122\" x2=\"185\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    <line x1=\"355\" y1=\"122\" x2=\"460\" y2=\"122\" stroke=\"#666\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    \n    <!-- Kitchen line markers -->\n    <line x1=\"185\" y1=\"0\" x2=\"185\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <line x1=\"355\" y1=\"0\" x2=\"355\" y2=\"244\" stroke=\"#666\" stroke-width=\"2\"/>\n    <text x=\"185\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    <text x=\"355\" y=\"-5\" text-anchor=\"middle\" font-size=\"9\" fill=\"#666\">Kitchen line</text>\n    \n    <!-- Dimensions -->\n    <text x=\"270\" y=\"275\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\">13.41m (44ft)</text>\n    <line x1=\"0\" y1=\"265\" x2=\"540\" y2=\"265\" stroke=\"#888\" stroke-width=\"0.5\"/>\n    <line x1=\"0\" y1=\"262\" x2=\"0\" y2=\"268\" stroke=\"#888\"/>\n    <line x1=\"540\" y1=\"262\" x2=\"540\" y2=\"268\" stroke=\"#888\"/>\n    \n    <text x=\"-15\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"#555\" transform=\"rotate(-90, -15, 125)\">6.10m (20ft)</text>\n  </g>\n  \n  <!-- Title -->\n  <text x=\"350\" y=\"35\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">SÂN PICKLEBALL — 3 VÙNG CHÍNH</text>\n  <text x=\"350\" y=\"55\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Kích thước thật: 6.10m × 13.41m</text>\n  \n  <!-- Legend -->\n  <g transform=\"translate(80, 410)\">\n    <rect x=\"0\" y=\"0\" width=\"20\" height=\"14\" fill=\"#FFF3B0\" stroke=\"#666\"/>\n    <text x=\"28\" y=\"12\" font-size=\"11\">Kitchen (NVZ) — không volley</text>\n    \n    <rect x=\"220\" y=\"0\" width=\"20\" height=\"14\" fill=\"#C8E0F0\"/>\n    <text x=\"248\" y=\"12\" font-size=\"11\">Transition Zone — đi qua nhanh</text>\n    \n    <rect x=\"460\" y=\"0\" width=\"20\" height=\"14\" fill=\"#E8F0E8\" stroke=\"#666\"/>\n    <text x=\"488\" y=\"12\" font-size=\"11\">Baseline area — serve/return</text>\n  </g>\n</svg>", "p2_drop": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 400\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"400\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">THIRD SHOT: DROP vs DRIVE (so sánh quỹ đạo)</text>\n  \n  <!-- Side view of court -->\n  <g transform=\"translate(60, 80)\">\n    <!-- Ground -->\n    <line x1=\"0\" y1=\"250\" x2=\"580\" y2=\"250\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <!-- Net (center) -->\n    <line x1=\"290\" y1=\"100\" x2=\"290\" y2=\"250\" stroke=\"#666\" stroke-width=\"3\"/>\n    <text x=\"290\" y=\"92\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">LƯỚI (91cm)</text>\n    \n    <!-- Kitchen zones -->\n    <rect x=\"205\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <rect x=\"290\" y=\"245\" width=\"85\" height=\"10\" fill=\"#FFF3B0\"/>\n    <text x=\"247\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen mình</text>\n    <text x=\"332\" y=\"270\" text-anchor=\"middle\" font-size=\"10\" fill=\"#8B6914\">Kitchen đối phương</text>\n    \n    <!-- Baseline labels -->\n    <line x1=\"0\" y1=\"245\" x2=\"0\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"0\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline mình</text>\n    <text x=\"30\" y=\"270\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">●</text>\n    <text x=\"30\" y=\"298\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Vị trí đánh</text>\n    \n    <line x1=\"580\" y1=\"245\" x2=\"580\" y2=\"255\" stroke=\"#333\"/>\n    <text x=\"580\" y=\"285\" text-anchor=\"middle\" font-size=\"10\" fill=\"#444\">Baseline đối phương</text>\n    \n    <!-- DROP arc (cao, mềm) - green -->\n    <path d=\"M 30 250 Q 200 30, 330 250\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\" stroke-dasharray=\"0\"/>\n    <text x=\"200\" y=\"35\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#2E7D32\">DROP — Arc cao, mềm</text>\n    <text x=\"200\" y=\"50\" text-anchor=\"middle\" font-size=\"10\" fill=\"#2E7D32\">Bóng rơi trong kitchen đối phương</text>\n    \n    <!-- Drop landing point -->\n    <circle cx=\"330\" cy=\"250\" r=\"6\" fill=\"#2E7D32\" stroke=\"#fff\" stroke-width=\"2\"/>\n    \n    <!-- DRIVE arc (thấp, nhanh) - red -->\n    <path d=\"M 30 250 Q 290 120, 540 230\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"3\"/>\n    <text x=\"430\" y=\"140\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#C62828\">DRIVE — Đường thấp, nhanh</text>\n    <text x=\"430\" y=\"155\" text-anchor=\"middle\" font-size=\"10\" fill=\"#C62828\">Bóng đi sâu, ép đối phương</text>\n    \n    <!-- Drive landing point -->\n    <circle cx=\"540\" cy=\"230\" r=\"6\" fill=\"#C62828\" stroke=\"#fff\" stroke-width=\"2\"/>\n  </g>\n  \n  <!-- Decision rules box -->\n  <rect x=\"60\" y=\"345\" width=\"580\" height=\"50\" fill=\"#F5F5F5\" stroke=\"#999\" stroke-width=\"1\"/>\n  <text x=\"70\" y=\"365\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Quy tắc đọc bóng:</text>\n  <text x=\"70\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng cao + return thấp → DRIVE (khai thác backhand mạnh của M Flow)</text>\n  <text x=\"380\" y=\"382\" font-size=\"11\" fill=\"#444\">• Bóng thấp + return cao → DROP (chậm rãi, chiếm kitchen)</text>\n</svg>", "p3_stack": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">STACKING POSITION</text>\n  \n  <!-- Left: Normal -->\n  <g transform=\"translate(40, 70)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#2E7D32\">VỊ TRÍ BÌNH THƯỜNG</text>\n    \n    <!-- Mini court -->\n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    <text x=\"130\" y=\"35\" text-anchor=\"middle\" font-size=\"9\">LƯỚI</text>\n    \n    <!-- Kitchen lines -->\n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"170\" y1=\"40\" x2=\"170\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Player A (top) - left side -->\n    <circle cx=\"45\" cy=\"100\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <!-- Player B (top) - right side -->\n    <circle cx=\"45\" cy=\"220\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Opponents -->\n    <circle cx=\"215\" cy=\"100\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">X</text>\n    <circle cx=\"215\" cy=\"220\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">Y</text>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">A trái sân, B phải sân</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Forehand A → giữa</text>\n  </g>\n  \n  <!-- Right: Stacking -->\n  <g transform=\"translate(380, 70)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#C62828\">STACKING (khi serve)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#FFF4E6\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    <text x=\"130\" y=\"35\" text-anchor=\"middle\" font-size=\"9\">LƯỚI</text>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"170\" y1=\"40\" x2=\"170\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Both players on same side (top = phía mình) -->\n    <circle cx=\"45\" cy=\"160\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"45\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"45\" cy=\"195\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"45\" y=\"200\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Arrow showing B will switch -->\n    <path d=\"M 45 215 Q 80 250, 70 200\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"2\" marker-end=\"url(#arrow2)\"/>\n    <text x=\"100\" y=\"240\" font-size=\"10\" fill=\"#C62828\" font-style=\"italic\">B switch sau serve</text>\n    \n    <!-- Opponents -->\n    <circle cx=\"215\" cy=\"100\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"105\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">X</text>\n    <circle cx=\"215\" cy=\"220\" r=\"14\" fill=\"#999\"/>\n    <text x=\"215\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">Y</text>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Cả 2 cùng bên khi B serve</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Sau serve B sang phải, A giữ trái</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrow2\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#C62828\"/>\n    </marker>\n  </defs>\n  \n  <!-- Bottom: Why stack -->\n  <rect x=\"40\" y=\"365\" width=\"620\" height=\"45\" fill=\"#F5F5F5\" stroke=\"#999\"/>\n  <text x=\"50\" y=\"385\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Tại sao stack:</text>\n  <text x=\"50\" y=\"402\" font-size=\"11\" fill=\"#444\">• Giữ backhand mạnh của M Flow ở vị trí ưu tiên   • Tránh điểm yếu bị target   • Forehand người kia luôn ở giữa</text>\n</svg>", "p3_rope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">SỢI DÂY THỪNG — Di chuyển đồng bộ</text>\n  <text x=\"350\" y=\"50\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">2 người di chuyển như bị buộc dây vô hình</text>\n  \n  <!-- Left: Before -->\n  <g transform=\"translate(40, 80)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#2E7D32\">TRƯỚC (vị trí gốc)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n    \n    <!-- Players at original position -->\n    <circle cx=\"55\" cy=\"120\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"55\" cy=\"200\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"205\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Rope between -->\n    <line x1=\"55\" y1=\"134\" x2=\"55\" y2=\"186\" stroke=\"#8B4513\" stroke-width=\"3\" stroke-dasharray=\"3,2\"/>\n    <text x=\"75\" y=\"165\" font-size=\"10\" fill=\"#8B4513\" font-style=\"italic\">~3-4m</text>\n    \n    <!-- Ball coming -->\n    <circle cx=\"180\" cy=\"160\" r=\"6\" fill=\"#FFEB3B\" stroke=\"#F57C00\" stroke-width=\"2\"/>\n    <text x=\"195\" y=\"158\" font-size=\"10\" fill=\"#F57C00\">bóng vào</text>\n    <text x=\"195\" y=\"170\" font-size=\"10\" fill=\"#F57C00\">phải sân</text>\n  </g>\n  \n  <!-- Right: After move -->\n  <g transform=\"translate(380, 80)\">\n    <text x=\"130\" y=\"20\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#C62828\">SAU (di chuyển đồng bộ)</text>\n    \n    <rect x=\"0\" y=\"40\" width=\"260\" height=\"240\" fill=\"#FFF4E6\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"130\" y1=\"40\" x2=\"130\" y2=\"280\" stroke=\"#333\" stroke-width=\"2\"/>\n    \n    <line x1=\"90\" y1=\"40\" x2=\"90\" y2=\"280\" stroke=\"#888\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n    \n    <!-- Original ghost positions -->\n    <circle cx=\"55\" cy=\"120\" r=\"14\" fill=\"#1F3864\" opacity=\"0.2\"/>\n    <circle cx=\"55\" cy=\"200\" r=\"14\" fill=\"#1F3864\" opacity=\"0.2\"/>\n    \n    <!-- New positions - both shifted right by ~25px -->\n    <circle cx=\"55\" cy=\"170\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">A</text>\n    \n    <circle cx=\"55\" cy=\"240\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"55\" y=\"245\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">B</text>\n    \n    <!-- Movement arrows -->\n    <path d=\"M 55 134 Q 35 152, 55 156\" fill=\"none\" stroke=\"#1F3864\" stroke-width=\"2\" marker-end=\"url(#arrow3)\"/>\n    <path d=\"M 55 214 Q 35 227, 55 226\" fill=\"none\" stroke=\"#1F3864\" stroke-width=\"2\" marker-end=\"url(#arrow3)\"/>\n    \n    <!-- Rope -->\n    <line x1=\"55\" y1=\"184\" x2=\"55\" y2=\"226\" stroke=\"#8B4513\" stroke-width=\"3\" stroke-dasharray=\"3,2\"/>\n    \n    <text x=\"130\" y=\"305\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Cả 2 dịch xuống cùng lúc</text>\n    <text x=\"130\" y=\"322\" text-anchor=\"middle\" font-size=\"11\" fill=\"#444\">Khoảng cách giữ ~3-4m</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrow3\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#1F3864\"/>\n    </marker>\n  </defs>\n  \n  <!-- Rules box -->\n  <rect x=\"40\" y=\"370\" width=\"620\" height=\"40\" fill=\"#F5F5F5\" stroke=\"#999\"/>\n  <text x=\"50\" y=\"388\" font-size=\"12\" font-weight=\"bold\" fill=\"#1F3864\">Nguyên tắc:</text>\n  <text x=\"50\" y=\"403\" font-size=\"11\" fill=\"#444\">Partner sang phải 1m → mình sang phải 1m. Đóng khoảng trống. Quá xa = lộ giữa. Quá gần = lộ 2 cánh.</text>\n</svg>", "p3_anti": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 420\" font-family=\"Arial, sans-serif\">\n  <rect width=\"700\" height=\"420\" fill=\"#FAFAFA\"/>\n  \n  <text x=\"350\" y=\"30\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"bold\" fill=\"#1F3864\">ANTI-BANGER: MIDDLE NEUTRALIZATION</text>\n  <text x=\"350\" y=\"50\" text-anchor=\"middle\" font-size=\"12\" fill=\"#666\">Khi banger drive — đẩy bóng về middle (KHÔNG đánh angle)</text>\n  \n  <!-- Mini court -->\n  <g transform=\"translate(150, 80)\">\n    <rect x=\"0\" y=\"0\" width=\"400\" height=\"260\" fill=\"#E8F0E8\" stroke=\"#333\" stroke-width=\"2\"/>\n    <line x1=\"200\" y1=\"0\" x2=\"200\" y2=\"260\" stroke=\"#333\" stroke-width=\"3\"/>\n    <text x=\"200\" y=\"-8\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\">LƯỚI</text>\n    \n    <!-- Kitchen lines -->\n    <line x1=\"135\" y1=\"0\" x2=\"135\" y2=\"260\" stroke=\"#888\" stroke-width=\"1\"/>\n    <line x1=\"265\" y1=\"0\" x2=\"265\" y2=\"260\" stroke=\"#888\" stroke-width=\"1\"/>\n    \n    <!-- Kitchen shading -->\n    <rect x=\"135\" y=\"0\" width=\"65\" height=\"260\" fill=\"#FFF3B0\" opacity=\"0.4\"/>\n    <rect x=\"200\" y=\"0\" width=\"65\" height=\"260\" fill=\"#FFF3B0\" opacity=\"0.4\"/>\n    \n    <!-- M Flow side (left) -->\n    <circle cx=\"120\" cy=\"90\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"120\" y=\"95\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">M</text>\n    \n    <circle cx=\"120\" cy=\"170\" r=\"14\" fill=\"#1F3864\"/>\n    <text x=\"120\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">P</text>\n    \n    <!-- Opponents (right) -->\n    <circle cx=\"280\" cy=\"90\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"280\" y=\"95\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">X</text>\n    \n    <circle cx=\"280\" cy=\"170\" r=\"14\" fill=\"#C62828\"/>\n    <text x=\"280\" y=\"175\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">Y</text>\n    \n    <!-- BAD: Drive to angle -->\n    <path d=\"M 120 130 Q 220 50, 350 90\" fill=\"none\" stroke=\"#C62828\" stroke-width=\"2\" stroke-dasharray=\"4,3\" marker-end=\"url(#arrowR)\"/>\n    <text x=\"290\" y=\"60\" font-size=\"10\" fill=\"#C62828\" font-weight=\"bold\">SAI: Angle</text>\n    <text x=\"270\" y=\"73\" font-size=\"9\" fill=\"#C62828\">(banger counter dễ)</text>\n    \n    <!-- GOOD: To middle -->\n    <path d=\"M 120 130 L 280 130\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\" marker-end=\"url(#arrowG)\"/>\n    <circle cx=\"280\" cy=\"130\" r=\"8\" fill=\"#2E7D32\" opacity=\"0.4\"/>\n    <text x=\"305\" y=\"135\" font-size=\"11\" fill=\"#2E7D32\" font-weight=\"bold\">ĐÚNG</text>\n    <text x=\"305\" y=\"148\" font-size=\"9\" fill=\"#2E7D32\">Middle</text>\n    \n    <!-- Question mark between opponents -->\n    <text x=\"280\" y=\"135\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\" fill=\"#fff\">?</text>\n  </g>\n  \n  <defs>\n    <marker id=\"arrowR\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#C62828\"/>\n    </marker>\n    <marker id=\"arrowG\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\" markerUnits=\"strokeWidth\">\n      <path d=\"M0,0 L8,4 L0,8 z\" fill=\"#2E7D32\"/>\n    </marker>\n  </defs>\n  \n  <!-- Why box -->\n  <rect x=\"40\" y=\"360\" width=\"620\" height=\"50\" fill=\"#E8F5E9\" stroke=\"#2E7D32\" stroke-width=\"1\"/>\n  <text x=\"50\" y=\"378\" font-size=\"12\" font-weight=\"bold\" fill=\"#2E7D32\">Tại sao middle là vũ khí chống banger:</text>\n  <text x=\"50\" y=\"395\" font-size=\"11\" fill=\"#444\">• Bóng giữa = 2 người đều có thể đánh = đắn đo = lỗi</text>\n  <text x=\"350\" y=\"395\" font-size=\"11\" fill=\"#444\">• Banger ghét slow game, ghét bóng buộc phải drop</text>\n</svg>"};
-
-const SKILL_EMBEDS = {"p1_grip": {"id": "bPpbiXa-TVU", "title": "#1 Most Versatile Pickleball Grip (Continental)", "channel": "PrimeTime Pickleball"}, "p1_dink": {"id": "k6Rw-wXMCgE", "title": "Figure 8 Pickleball Dinking Drill", "channel": "PrimeTime Pickleball"}, "p1_reset": {"id": "iBQ3PV_Q9bM", "title": "Mastering The RESET in 3 Simple Steps", "channel": "Briones Pickleball"}, "p1_serve": {"id": "xOzaRBMDHeg", "title": "The SECRET To A POWERFUL Pickleball Serve", "channel": "Briones Pickleball"}, "p1_kitchen": {"id": "ReNgTKsdN2M", "title": "Pickleball Paddle Positioning Masterclass", "channel": "Pickleball coaching"}, "p2_drop": {"id": "IX-yFrWSOL8", "title": "How To Hit A Perfect 3rd Shot Drop", "channel": "Briones Pickleball"}, "p2_bh": {"id": null, "title": "Backhand Drive Technique", "channel": "Briones / PrimeTime", "search": "briones+pickleball+backhand+drive"}, "p2_trans": {"id": null, "title": "Surviving The Transition Zone", "channel": "Briones", "search": "briones+transition+zone+pickleball"}, "p2_lob": {"id": null, "title": "How To Defend The Lob", "channel": "PrimeTime / Briones", "search": "how+to+defend+lob+pickleball"}, "p3_stack": {"id": null, "title": "Stacking in Pickleball Explained", "channel": "Briones", "search": "pickleball+stacking+explained+briones"}, "p3_rope": {"id": null, "title": "Doubles Movement Like Pros", "channel": "PrimeTime", "search": "pickleball+doubles+positioning+movement"}, "p3_anti": {"id": null, "title": "How To Beat Bangers", "channel": "PrimeTime / Briones", "search": "how+to+beat+bangers+pickleball"}, "p3_fh": {"id": null, "title": "Forehand Takes Middle Rule", "channel": "Briones", "search": "briones+forehand+takes+middle"}, "p4_hand": {"id": null, "title": "Hand Battle At Kitchen Line", "channel": "PrimeTime", "search": "pickleball+hand+battle+kitchen+line"}, "p4_speed": {"id": null, "title": "When To Speed Up The Ball", "channel": "Briones", "search": "pickleball+when+to+speed+up"}, "p4_psych": {"id": null, "title": "Mental Game Of Pickleball", "channel": "PrimeTime", "search": "mental+game+pickleball"}, "p4_read": {"id": null, "title": "Reading Your Opponent's Weaknesses", "channel": "Briones", "search": "pickleball+read+opponent+weakness"}};
-
-const SKILL_VIDEOS = {"p1_grip": ["Continental grip pickleball", "briones+pickleball+continental+grip"], "p1_dink": ["Dinking drills consistency", "pickleball+dinking+drills+consistency"], "p1_reset": ["Pickleball reset shot tutorial", "pickleball+reset+drills+soft+hands"], "p1_serve": ["Deep serve technique", "briones+pickleball+serve+tutorial"], "p1_kitchen": ["Kitchen line positioning", "briones+pickleball+kitchen+line+positioning"], "p2_drop": ["Third shot drop mastery", "briones+third+shot+drop"], "p2_bh": ["Backhand drive pickleball", "primetime+pickleball+backhand+drive"], "p2_trans": ["Transition zone pickleball", "briones+transition+zone+pickleball"], "p2_lob": ["How to defend lob", "how+to+defend+lob+pickleball"], "p3_stack": ["Stacking in pickleball", "pickleball+stacking+explained"], "p3_rope": ["Doubles positioning pickleball", "pickleball+doubles+positioning+pro"], "p3_anti": ["How to beat bangers", "how+to+beat+bangers+pickleball"], "p3_fh": ["Forehand takes middle", "briones+forehand+takes+middle"], "p4_hand": ["Hand battle kitchen line", "pickleball+hand+battle+kitchen"], "p4_speed": ["When to speed up", "pickleball+when+to+speed+up"], "p4_psych": ["Mental game pickleball", "mental+game+pickleball"], "p4_read": ["Read opponent weakness", "pickleball+read+opponent+weakness"]};
-
-const RUBRICS = [
-  // Phase 1
-  { id:'p1_grip', phase:1, name:'Dual Grip Switching', criteria:[
-    'Continental cho soft game',
-    'Grip 3 cho drive',
-    'Tốc độ chuyển grip',
-    'Sự thoải mái'
-  ]},
-  { id:'p1_dink', phase:1, name:'Crosscourt Dink', criteria:[
-    'Rally count với partner',
-    'Bóng vào kitchen %',
-    'Backswing compact',
-    'Soft hand'
-  ]},
-  { id:'p1_reset', phase:1, name:'Reset', criteria:[
-    'Bóng rơi trong kitchen',
-    'Không bật quá đầu lưới',
-    'Cúi gối đúng',
-    'Liên tục dưới áp lực'
-  ]},
-  { id:'p1_serve', phase:1, name:'Deep Serve', criteria:[
-    '% vào 1/3 cuối sân',
-    '% vào sân',
-    'Đa dạng vị trí',
-    'Tốc độ + spin có chủ ý'
-  ]},
-  { id:'p1_kitchen', phase:1, name:'Kitchen Positioning', criteria:[
-    'Split-step trước mỗi cú',
-    'Shuffle ngang',
-    'Khoảng cách với kitchen line',
-    'Recover sau cú đánh'
-  ]},
-  // Phase 2
-  { id:'p2_drop', phase:2, name:'Third Shot Drop', criteria:[
-    '% vào kitchen',
-    'Arc đúng',
-    'Khả năng từ baseline',
-    'Di chuyển lên kitchen sau drop'
-  ]},
-  { id:'p2_bh', phase:2, name:'Backhand Weapon (Drive)', criteria:[
-    '% vào sân',
-    'Trúng target góc',
-    'Kinetic chain',
-    'Dùng làm vũ khí thực chiến'
-  ]},
-  { id:'p2_trans', phase:2, name:'Transition Zone Reset', criteria:[
-    'Reset vào kitchen %',
-    'Không panic',
-    'Soft hand under pressure',
-    'Move forward khi reset'
-  ]},
-  { id:'p2_lob', phase:2, name:'Lob Defense', criteria:[
-    'Drop-step + xoay người',
-    'Smash thành công %',
-    'Compact swing khi smash',
-    'Về vị trí sau smash'
-  ]},
-  // Phase 3
-  { id:'p3_stack', phase:3, name:'Stacking', criteria:[
-    'Hiểu khi nào stack',
-    'Di chuyển sau serve',
-    'Communication với partner',
-    'Dùng trong match thật'
-  ]},
-  { id:'p3_rope', phase:3, name:'Sợi Dây Thừng', criteria:[
-    'Mirror partner movement',
-    'Khoảng cách 3-4m',
-    'Đóng khoảng trống',
-    'Match awareness'
-  ]},
-  { id:'p3_anti', phase:3, name:'Anti-Banger', criteria:[
-    'Soft block volley',
-    'Low reset under drive',
-    'Middle neutralization',
-    'Thắng exchange với banger %'
-  ]},
-  { id:'p3_fh', phase:3, name:'Forehand Takes Middle', criteria:[
-    'Phản xạ lấy bóng giữa',
-    'Gọi tên trước khi đánh',
-    'Không va với partner'
-  ]},
-  // Phase 4
-  { id:'p4_hand', phase:4, name:'Hand Battle', criteria:[
-    'Paddle up position',
-    'Compact movement',
-    'Phản xạ block + redirect',
-    'Không lùi khỏi kitchen'
-  ]},
-  { id:'p4_speed', phase:4, name:'Speed-up Timing', criteria:[
-    'Nhận diện khi nào nên',
-    '% speed-up thành công',
-    'Không speed-up khi sai timing',
-    'Đa dạng cú speed-up'
-  ]},
-  { id:'p4_psych', phase:4, name:'Match Psychology', criteria:[
-    'Breathing reset giữa rally',
-    'Post-UE ritual',
-    'Partner support',
-    'Không bể khi bị dẫn 0-5'
-  ]},
-  { id:'p4_read', phase:4, name:'Đọc Đối Thủ', criteria:[
-    'Nhận diện điểm yếu',
-    'Khai thác có hệ thống',
-    'Điều chỉnh giữa game'
-  ]}
-];
 
 const PHASE_INFO = {
   1: { letter: 'A', name: 'Foundation', weeks: '1-6', color: '#C49A3B' },
@@ -4857,7 +4948,7 @@ function renderContact() {
       <div class="contact-crit">
         <div class="contact-crit-label">${idx + 1}. ${c}</div>
         <div class="rating" data-contact="${idx}">
-          ${[1,2,3,4,5].map(v => `<div class="rating-dot ${score === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
+          ${[1,1.5,2,2.5,3,3.5,4,4.5,5].map(v => `<div class="rating-dot ${score === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
         </div>
       </div>
     `;
@@ -4872,7 +4963,7 @@ function renderContact() {
   container.querySelectorAll('.rating-dot').forEach(dot => {
     dot.onclick = function() {
       const idx = parseInt(this.parentElement.dataset.contact);
-      const val = parseInt(this.dataset.val);
+      const val = parseFloat(this.dataset.val);
       setContactScore(idx, val);
     };
   });
@@ -4917,6 +5008,17 @@ function formatNote(text) {
   return s;
 }
 
+function heightLadder(heightId) {
+  // 4 nodes stacked low->high (low at bottom). Active = cam, rest = xám nhẹ.
+  const rows = [['veryhigh',6],['high',19],['mid',32],['low',44]];
+  let dots = '';
+  rows.forEach(([id, cy]) => {
+    const on = id === heightId;
+    dots += `<circle cx="9" cy="${cy}" r="${on ? 5 : 4}" fill="${on ? '#C44827' : '#D8D2C4'}"/>`;
+  });
+  return `<svg width="18" height="50" viewBox="0 0 18 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="9" y1="6" x2="9" y2="44" stroke="#EDE7D6" stroke-width="2"/>${dots}</svg>`;
+}
+
 function renderCoordCells() {
   const data = getData();
   const container = document.getElementById('coordList');
@@ -4947,8 +5049,11 @@ function renderCoordCells() {
       let html = `
         <button class="coord-head" onclick="toggleCell('${key}')">
           <div class="coord-head-left">
-            <div class="coord-height-tag">${h.icon} ${h.name} <span class="coord-height-desc">· ${h.desc}</span></div>
-            <div class="coord-shot"><span class="coord-shot-prefix">cú khả thi</span>${(info.shots || []).join(' · ')}</div>
+            <div class="coord-ladder">${heightLadder(h.id)}</div>
+            <div class="coord-head-left-text">
+              <div class="coord-height-tag">${h.name} <span class="coord-height-desc">· ${h.desc}</span></div>
+              <div class="coord-shot"><span class="coord-shot-prefix">cú khả thi</span>${(info.shots || []).join(' · ')}</div>
+            </div>
           </div>
           <div class="coord-head-right">
             <div class="coord-mini-score"><span class="cs-cong">${congDisplay}</span><span class="cs-sep">/</span><span class="cs-thu">${thuDisplay}</span></div>
@@ -4962,13 +5067,13 @@ function renderCoordCells() {
             <div class="coord-score-row">
               <div class="coord-score-label">D3 · Công</div>
               <div class="rating" data-cell="${key}" data-type="cong">
-                ${[1,2,3,4,5].map(v => `<div class="rating-dot ${cd.cong === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
+                ${[1,1.5,2,2.5,3,3.5,4,4.5,5].map(v => `<div class="rating-dot ${cd.cong === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
               </div>
             </div>
             <div class="coord-score-row">
               <div class="coord-score-label">D3 · Thủ</div>
               <div class="rating" data-cell="${key}" data-type="thu">
-                ${[1,2,3,4,5].map(v => `<div class="rating-dot ${cd.thu === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
+                ${[1,1.5,2,2.5,3,3.5,4,4.5,5].map(v => `<div class="rating-dot ${cd.thu === v ? 'selected' : ''}" data-val="${v}">${v}</div>`).join('')}
               </div>
             </div>
           </div>
@@ -4987,7 +5092,7 @@ function renderCoordCells() {
       const parent = this.parentElement;
       const key = parent.dataset.cell;
       const type = parent.dataset.type;
-      const val = parseInt(this.dataset.val);
+      const val = parseFloat(this.dataset.val);
       setCellScore(key, type, val);
     };
   });
@@ -5021,7 +5126,7 @@ function setCellScore(key, type, val) {
     if (thuEl) thuEl.textContent = cd.thu > 0 ? cd.thu : '–';
     // Update dot selection
     card.querySelectorAll(`.rating[data-cell="${key}"][data-type="${type}"] .rating-dot`).forEach(dot => {
-      const v = parseInt(dot.dataset.val);
+      const v = parseFloat(dot.dataset.val);
       dot.classList.toggle('selected', cd[type] === v);
     });
   }
@@ -5107,6 +5212,41 @@ function renderMatrix() {
   }
 }
 
+function coordIllustration(posId, hId) {
+  const ground = 124, netX = 210, kLine = 186, oppK = 234;
+  const posX = { baseline: 32, transition: 100, kitchen: 172 }[posId];
+  const ballY = { low: 112, mid: 96, high: 76, veryhigh: 52 }[hId];
+  const color = { veryhigh: '#C44827', high: '#D2703A', mid: '#C49A3B', low: '#5A8A4B' }[hId];
+  const posName = { baseline: 'Baseline', transition: 'Chuyển tiếp', kitchen: 'Bếp' }[posId];
+  const bx = posX + 20;
+  let traj;
+  if (hId === 'low' || hId === 'mid') {
+    const apexY = Math.max(38, ballY - 34), land = 224;
+    traj = `M ${bx} ${ballY} Q ${(bx + land) / 2} ${apexY} ${land} 120`;
+  } else {
+    const land = 268;
+    traj = `M ${bx} ${ballY} Q ${netX} ${ballY - 4} ${land} 120`;
+  }
+  return `<svg viewBox="0 0 300 152" xmlns="http://www.w3.org/2000/svg" font-family="Geist, Arial, sans-serif">
+    <defs><marker id="ci-${posId}-${hId}" markerWidth="8" markerHeight="8" refX="4.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="${color}"/></marker></defs>
+    <rect x="${netX}" y="0" width="90" height="152" fill="#F7F4EC"/>
+    <line x1="10" y1="${ground}" x2="296" y2="${ground}" stroke="#D9D2C2" stroke-width="2"/>
+    <line x1="${kLine}" y1="${ground - 6}" x2="${kLine}" y2="${ground + 4}" stroke="#B8B0A0" stroke-width="1.5"/>
+    <line x1="${oppK}" y1="${ground - 6}" x2="${oppK}" y2="${ground + 4}" stroke="#B8B0A0" stroke-width="1.5"/>
+    <line x1="${netX}" y1="${ground}" x2="${netX}" y2="82" stroke="#1F3D2C" stroke-width="3"/>
+    <text x="${netX}" y="76" text-anchor="middle" font-size="7" fill="#1F3D2C">lưới</text>
+    <text x="266" y="${ground + 14}" text-anchor="middle" font-size="7.5" fill="#A8A296" font-style="italic">đối thủ</text>
+    <line x1="${posX}" y1="${ground - 38}" x2="${bx - 4}" y2="${ballY + 2}" stroke="#3E6B3A" stroke-width="2.5"/>
+    <circle cx="${posX}" cy="${ground - 50}" r="7" fill="#3E6B3A"/>
+    <line x1="${posX}" y1="${ground - 43}" x2="${posX}" y2="${ground - 16}" stroke="#3E6B3A" stroke-width="3"/>
+    <line x1="${posX}" y1="${ground - 16}" x2="${posX - 8}" y2="${ground}" stroke="#3E6B3A" stroke-width="3"/>
+    <line x1="${posX}" y1="${ground - 16}" x2="${posX + 8}" y2="${ground}" stroke="#3E6B3A" stroke-width="3"/>
+    <circle cx="${bx}" cy="${ballY}" r="5.5" fill="${color}" stroke="#fff" stroke-width="1.5"/>
+    <path d="${traj}" fill="none" stroke="${color}" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#ci-${posId}-${hId})"/>
+    <text x="${posX}" y="${ground + 14}" text-anchor="middle" font-size="8" font-weight="600" fill="#5A554C">${posName}</text>
+  </svg>`;
+}
+
 function showMatrixDetail(key) {
   const detail = document.getElementById('matrixDetail');
   if (!detail) return;
@@ -5123,6 +5263,7 @@ function showMatrixDetail(key) {
   const shotsHtml = (info.shots || []).map(s => `<span class="md-shot-chip">${s}</span>`).join('');
 
   detail.innerHTML = `
+    <div class="md-illust">${coordIllustration(posId, hId)}</div>
     <div class="md-coord"><span class="md-d1">${pos.name}</span> <span class="md-x">×</span> <span class="md-d2" style="color:${h.dot}">${h.name}</span></div>
     <div class="md-shots-label">Các cú khả thi ở ô này:</div>
     <div class="md-shots">${shotsHtml}</div>
@@ -5418,6 +5559,7 @@ document.querySelectorAll('.tab').forEach(btn => {
     if (btn.dataset.view === 'today') { renderProgress(); renderMealMenu(); }
     if (btn.dataset.view === 'rubric') { renderProfile(); renderRubrics(); }
     if (btn.dataset.view === 'philosophy') renderMatrix();
+    if (btn.dataset.view === 'tactics') renderTactics();
     if (btn.dataset.view === 'journal') { journalDate = selectedDate; renderJournal(); }
   });
 });
@@ -5453,90 +5595,6 @@ document.getElementById('weightInput').addEventListener('keypress', e => {
   if (e.key === 'Enter') logWeight();
 });
 
-
-// ============================================================
-// WARMUP TIMER
-// ============================================================
-let timerInterval = null;
-let timerSecondsLeft = 8 * 60;
-
-function formatTimer(s) {
-  const m = Math.floor(s / 60);
-  const sec = s % 60;
-  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-}
-
-function startTimer() {
-  const btn = document.getElementById('timerStartBtn');
-  if (timerInterval) {
-    // Pause
-    clearInterval(timerInterval);
-    timerInterval = null;
-    btn.textContent = '▶ Tiếp tục';
-    return;
-  }
-  btn.textContent = '⏸ Tạm dừng';
-  timerInterval = setInterval(() => {
-    timerSecondsLeft--;
-    document.getElementById('warmupTimer').textContent = formatTimer(timerSecondsLeft);
-    if (timerSecondsLeft <= 0) {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      btn.textContent = '▶ Bắt đầu';
-      timerSecondsLeft = 8 * 60;
-      document.getElementById('warmupTimer').textContent = '00:00';
-      toast('Xong khởi động! Vào sân thôi 🎾');
-      try {
-        // Vibrate if available
-        if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
-      } catch(e){}
-    }
-  }, 1000);
-}
-
-function resetTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
-  timerSecondsLeft = 8 * 60;
-  document.getElementById('warmupTimer').textContent = formatTimer(timerSecondsLeft);
-  document.getElementById('timerStartBtn').textContent = '▶ Bắt đầu';
-}
-
-
-function renderSkillVideo(skillId) {
-  const embed = SKILL_EMBEDS[skillId];
-  if (!embed) {
-    if (SKILL_VIDEOS[skillId]) {
-      return `<a class="vid-link" target="_blank" href="https://www.youtube.com/results?search_query=${SKILL_VIDEOS[skillId][1]}">▶ Tìm video YouTube: ${SKILL_VIDEOS[skillId][0]}</a>`;
-    }
-    return '';
-  }
-  if (embed.id) {
-    // Thumbnail card linking directly to YouTube
-    return `
-      <a class="video-card" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${embed.id}">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/${embed.id}/hqdefault.jpg" alt="${embed.title}" loading="lazy" onerror="this.style.display='none'">
-          <div class="video-play-icon">▶</div>
-        </div>
-        <div class="video-info">
-          <div class="video-title">${embed.title}</div>
-          <div class="video-channel">${embed.channel} · YouTube ↗</div>
-        </div>
-      </a>
-    `;
-  } else if (embed.search) {
-    return `<a class="vid-link" target="_blank" href="https://www.youtube.com/results?search_query=${embed.search}">▶ Tìm video: ${embed.title} (${embed.channel})</a>`;
-  }
-  return '';
-}
-
-function toggleRubricSvg(id) {
-  const el = document.getElementById('svg-' + id);
-  if (el) el.classList.toggle('show');
-}
 
 // ============================================================
 // MEAL TAB
