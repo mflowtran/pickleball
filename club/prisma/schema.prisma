@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// role:   ADMIN | LEADER | MEMBER
+// status: PENDING | ACTIVE | REJECTED | DISABLED
+// gender: M | F
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  nickname     String?
+  email        String?  @unique
+  phone        String?  @unique
+  googleSub    String?  @unique
+  passwordHash String?
+  avatarUrl    String?
+  gender       String?
+  hand         String? // R | L
+  hidePhone    Boolean  @default(false)
+  bio          String?
+  role         String   @default("MEMBER")
+  status       String   @default("PENDING")
+  levelId      Int?
+  level        Level?   @relation(fields: [levelId], references: [id])
+  joinedAt     DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  sessions      Session[]
+  ratings       Rating[]
+  matchPlayers  MatchPlayer[]
+  ratingChanges RatingChange[]
+  levelChanges  LevelChange[]
+  matchesMade   Match[]       @relation("createdBy")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+// Nhóm trình độ. baseRating = điểm trình khởi đầu khi xếp vào nhóm.
+model Level {
+  id         Int    @id @default(autoincrement())
+  name       String
+  sortOrder  Int    @default(0)
+  baseRating Float
+  users      User[]
+}
+
+model LevelChange {
+  id          Int      @id @default(autoincrement())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fromLevelId Int?
+  toLevelId   Int?
+  note        String?
+  changedById String?
+  createdAt   DateTime @default(now())
+}
+
+// category: SINGLES | DOUBLES | MD | WD | XD
+model Rating {
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category String
+  value    Float
+  matches  Int    @default(0)
+  wins     Int    @default(0)
+
+  @@id([userId, category])
+}
+
+// kind:     SINGLES | DOUBLES
+// category: SINGLES | MD | WD | XD | DOUBLES (đôi không phân loại)
+// status:   PENDING | CONFIRMED | REJECTED
+model Match {
+  id            String    @id @default(cuid())
+  kind          String
+  category      String
+  playedAt      DateTime
+  sets          String // JSON [[11,7],[9,11]] — điểm đội 1, đội 2 mỗi set
+  winnerTeam    Int
+  status        String    @default("PENDING")
+  note          String?
+  createdById   String
+  createdBy     User      @relation("createdBy", fields: [createdById], references: [id])
+  confirmedById String?
+  confirmedAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  // Độ (kèo): đội thua trả cho đội thắng
+  stakeItem   String?
+  stakeQty    Float?
+  stakeNote   String?
+  stakePaid   Boolean   @default(false)
+  stakePaidAt DateTime?
+
+  players       MatchPlayer[]
+  ratingChanges RatingChange[]
+
+  @@index([status, playedAt])
+}
+
+model MatchPlayer {
+  matchId String
+  match   Match  @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  userId  String
+  user    User   @relation(fields: [userId], references: [id])
+  team    Int
+
+  @@id([matchId, userId])
+  @@index([userId])
+}
+
+model RatingChange {
+  id       Int      @id @default(autoincrement())
+  matchId  String
+  match    Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category String
+  before   Float
+  after    Float
+  delta    Float
+  won      Boolean
+  playedAt DateTime
+
+  @@index([category, playedAt])
+  @@index([userId, category])
+}
